@@ -172,6 +172,11 @@ const TILES: {
     label: "Manifest",
     blurb: "Machine-readable route map",
   },
+  {
+    to: "/marketplace/openapi",
+    label: "OpenAPI",
+    blurb: "Live path contract browser",
+  },
 ];
 
 function MarketplaceHub() {

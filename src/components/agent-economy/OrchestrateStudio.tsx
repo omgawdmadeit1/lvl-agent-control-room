@@ -152,6 +152,29 @@ export function OrchestrateStudio() {
               </li>
             ))}
           </ol>
+          {steps.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link
+                to="/marketplace/product"
+                search={{
+                  skills: steps
+                    .map((s) => s.skill_id)
+                    .filter(Boolean)
+                    .join(","),
+                }}
+                className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+              >
+                Open multi-skill cart ({steps.filter((s) => s.skill_id).length})
+              </Link>
+              <Link
+                to="/marketplace/pay"
+                search={{ skill: steps[0]?.skill_id || "agent-x402-first-buy" }}
+                className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+              >
+                Pay first step
+              </Link>
+            </div>
+          )}
           {job?.payment_split && (
             <pre className={cn("mt-4 max-h-48 overflow-auto rounded bg-elevated p-2 font-mono text-[10px] text-muted")}>
               {JSON.stringify(job.payment_split, null, 2)}

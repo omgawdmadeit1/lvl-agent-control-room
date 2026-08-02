@@ -33,6 +33,7 @@ import { Route as MarketplaceLiveRouteImport } from './routes/marketplace/live'
 import { Route as MarketplaceMandatesRouteImport } from './routes/marketplace/mandates'
 import { Route as MarketplaceManifestRouteImport } from './routes/marketplace/manifest'
 import { Route as MarketplaceMcpRouteImport } from './routes/marketplace/mcp'
+import { Route as MarketplaceOpenapiRouteImport } from './routes/marketplace/openapi'
 import { Route as MarketplaceOrchestrateRouteImport } from './routes/marketplace/orchestrate'
 import { Route as MarketplacePayRouteImport } from './routes/marketplace/pay'
 import { Route as MarketplaceProductRouteImport } from './routes/marketplace/product'
@@ -175,6 +176,11 @@ const MarketplaceMcpRoute = MarketplaceMcpRouteImport.update({
   path: '/mcp',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceOpenapiRoute = MarketplaceOpenapiRouteImport.update({
+  id: '/openapi',
+  path: '/openapi',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceOrchestrateRoute = MarketplaceOrchestrateRouteImport.update({
   id: '/orchestrate',
   path: '/orchestrate',
@@ -305,6 +311,7 @@ export interface FileRoutesByFullPath {
   '/marketplace/mandates': typeof MarketplaceMandatesRoute
   '/marketplace/manifest': typeof MarketplaceManifestRoute
   '/marketplace/mcp': typeof MarketplaceMcpRoute
+  '/marketplace/openapi': typeof MarketplaceOpenapiRoute
   '/marketplace/orchestrate': typeof MarketplaceOrchestrateRoute
   '/marketplace/pay': typeof MarketplacePayRoute
   '/marketplace/product': typeof MarketplaceProductRoute
@@ -349,6 +356,7 @@ export interface FileRoutesByTo {
   '/marketplace/mandates': typeof MarketplaceMandatesRoute
   '/marketplace/manifest': typeof MarketplaceManifestRoute
   '/marketplace/mcp': typeof MarketplaceMcpRoute
+  '/marketplace/openapi': typeof MarketplaceOpenapiRoute
   '/marketplace/orchestrate': typeof MarketplaceOrchestrateRoute
   '/marketplace/pay': typeof MarketplacePayRoute
   '/marketplace/product': typeof MarketplaceProductRoute
@@ -397,6 +405,7 @@ export interface FileRoutesById {
   '/marketplace/mandates': typeof MarketplaceMandatesRoute
   '/marketplace/manifest': typeof MarketplaceManifestRoute
   '/marketplace/mcp': typeof MarketplaceMcpRoute
+  '/marketplace/openapi': typeof MarketplaceOpenapiRoute
   '/marketplace/orchestrate': typeof MarketplaceOrchestrateRoute
   '/marketplace/pay': typeof MarketplacePayRoute
   '/marketplace/product': typeof MarketplaceProductRoute
@@ -446,6 +455,7 @@ export interface FileRouteTypes {
     | '/marketplace/mandates'
     | '/marketplace/manifest'
     | '/marketplace/mcp'
+    | '/marketplace/openapi'
     | '/marketplace/orchestrate'
     | '/marketplace/pay'
     | '/marketplace/product'
@@ -490,6 +500,7 @@ export interface FileRouteTypes {
     | '/marketplace/mandates'
     | '/marketplace/manifest'
     | '/marketplace/mcp'
+    | '/marketplace/openapi'
     | '/marketplace/orchestrate'
     | '/marketplace/pay'
     | '/marketplace/product'
@@ -537,6 +548,7 @@ export interface FileRouteTypes {
     | '/marketplace/mandates'
     | '/marketplace/manifest'
     | '/marketplace/mcp'
+    | '/marketplace/openapi'
     | '/marketplace/orchestrate'
     | '/marketplace/pay'
     | '/marketplace/product'
@@ -742,6 +754,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceMcpRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/openapi': {
+      id: '/marketplace/openapi'
+      path: '/openapi'
+      fullPath: '/marketplace/openapi'
+      preLoaderRoute: typeof MarketplaceOpenapiRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/orchestrate': {
       id: '/marketplace/orchestrate'
       path: '/orchestrate'
@@ -908,6 +927,7 @@ interface MarketplaceRouteChildren {
   MarketplaceMandatesRoute: typeof MarketplaceMandatesRoute
   MarketplaceManifestRoute: typeof MarketplaceManifestRoute
   MarketplaceMcpRoute: typeof MarketplaceMcpRoute
+  MarketplaceOpenapiRoute: typeof MarketplaceOpenapiRoute
   MarketplaceOrchestrateRoute: typeof MarketplaceOrchestrateRoute
   MarketplacePayRoute: typeof MarketplacePayRoute
   MarketplaceProductRoute: typeof MarketplaceProductRoute
@@ -942,6 +962,7 @@ const MarketplaceRouteChildren: MarketplaceRouteChildren = {
   MarketplaceMandatesRoute: MarketplaceMandatesRoute,
   MarketplaceManifestRoute: MarketplaceManifestRoute,
   MarketplaceMcpRoute: MarketplaceMcpRoute,
+  MarketplaceOpenapiRoute: MarketplaceOpenapiRoute,
   MarketplaceOrchestrateRoute: MarketplaceOrchestrateRoute,
   MarketplacePayRoute: MarketplacePayRoute,
   MarketplaceProductRoute: MarketplaceProductRoute,
