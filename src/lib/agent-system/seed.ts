@@ -75,9 +75,9 @@ export function createInitialState(): AgentSystemState {
       task({
         id: "P0.2",
         title: "Fix seal.listing URLs",
-        detail: "Replace .html listing paths with trailing-slash canonical /listings/{id}/.",
+        detail: "SHIPPED: .html → trailing slash (CF _redirects + catalog listing_url). Verified live 301.",
         role: "builder",
-        status: "READY",
+        status: "DONE",
         priority: "P0",
         dependsOn: [],
         cost: 2,

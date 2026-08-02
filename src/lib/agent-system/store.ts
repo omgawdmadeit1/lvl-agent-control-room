@@ -56,6 +56,7 @@ interface Store extends AgentSystemState {
   flood: (n?: number) => void;
   openCircuit: () => void;
   runLiveScout: () => Promise<void>;
+  maybeAutoScout: () => void;
   exportRun: () => void;
   clearPersistence: () => void;
   applyScout: () => void;
@@ -83,6 +84,7 @@ function persistSlice(get: () => Store) {
     flood: _9,
     openCircuit: _10,
     runLiveScout: _11,
+    maybeAutoScout: _11b,
     exportRun: _12,
     clearPersistence: _13,
     applyScout: _14,
@@ -137,6 +139,7 @@ export const useAgentSystem = create<Store>((set, get) => ({
     } else {
       set({ hydrated: true });
     }
+    queueMicrotask(() => get().maybeAutoScout());
   },
 
   setAutoRun: (v) => set({ autoRun: v }),
@@ -322,6 +325,13 @@ export const useAgentSystem = create<Store>((set, get) => ({
     persistSlice(get);
   },
 
+
+  maybeAutoScout: () => {
+    const s = get();
+    if (s.liveScout.status === "running") return;
+    if (s.liveScout.findings.length > 0) return;
+    void get().runLiveScout();
+  },
   runLiveScout: async () => {
     set({
       liveScout: {

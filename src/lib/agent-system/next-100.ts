@@ -107,7 +107,7 @@ export const NEXT_100: BuildStep[] = [
   { id: 83, title: "Real x402 pay flow sandbox", area: "scout", status: "later" },
   { id: 84, title: "Webhook oracle simulator", area: "agents", status: "later" },
   { id: 85, title: "Marketplace listing writer agent", area: "agents", status: "later" },
-  { id: 86, title: "Seal.listing rewrite PR generator", area: "ship", status: "later" },
+  { id: 86, title: "Seal.listing rewrite PR generator", area: "ship", status: "done" },
   { id: 87, title: "Catalog slim byte budget alarm", area: "perf", status: "later" },
   { id: 88, title: "VPAT draft exporter", area: "a11y", status: "later" },
   { id: 89, title: "i18n shell (en first)", area: "ux", status: "later" },

@@ -8,11 +8,12 @@ const NAV = [
   { href: "#backpressure", label: "Backpressure" },
   { href: "#settings", label: "Settings" },
   { href: "#next-100", label: "Next 100" },
+  { href: "https://lvlltd.com", label: "lvlltd.com", external: true },
   { href: "#drawer-code", label: "Drawer code" },
   { href: "#keyboard-shortcuts", label: "Shortcuts" },
   { href: "#a11y-standards", label: "A11y" },
   { href: "#wcag22-criteria", label: "WCAG 2.2" },
-] as const;
+];
 
 export function SkipLink() {
   return (
@@ -61,6 +62,9 @@ export function QuickNav() {
             <li key={item.href}>
               <a
                 href={item.href}
+                {...("external" in item && item.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="inline-flex h-11 min-target items-center rounded-[var(--radius-md)] px-3 text-xs font-medium text-muted transition hover:bg-elevated hover:text-fg"
               >
                 {item.label}
