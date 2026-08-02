@@ -105,6 +105,21 @@ const TILES: {
     label: "Six rails",
     blurb: "Marketplace architecture",
   },
+  {
+    to: "/marketplace/protocols",
+    label: "Protocols",
+    blurb: "MCP · A2A · AP2 · meter",
+  },
+  {
+    to: "/marketplace/intent",
+    label: "Intent search",
+    blurb: "NL goal → skill match",
+  },
+  {
+    to: "/marketplace/trust",
+    label: "Trust lab",
+    blurb: "Scores · security · eval",
+  },
 ];
 
 function MarketplaceHub() {

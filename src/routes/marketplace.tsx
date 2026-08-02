@@ -32,6 +32,9 @@ const LINKS = [
   { to: "/marketplace/shelf" as const, label: "Shelf" },
   { to: "/marketplace/wallet" as const, label: "Wallet" },
   { to: "/marketplace/agents" as const, label: "Agents" },
+  { to: "/marketplace/protocols" as const, label: "Protocols" },
+  { to: "/marketplace/intent" as const, label: "Intent" },
+  { to: "/marketplace/trust" as const, label: "Trust" },
 ];
 
 function MarketplaceLayout() {
