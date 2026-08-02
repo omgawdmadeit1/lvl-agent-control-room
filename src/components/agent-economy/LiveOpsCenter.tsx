@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { LiveOpsSnapshot } from "@/lib/agent-economy/live-ops";
 import { cn } from "@/components/ui/cn";
+import { StatusHistoryStrip } from "@/components/agent-economy/StatusHistoryStrip";
 
 function Panel({
   title,
@@ -74,6 +75,9 @@ export function LiveOpsCenter({ data }: { data: LiveOpsSnapshot }) {
         <p className="mt-2 font-mono text-[11px] text-subtle">
           snapshot {data.durationMs}ms · ready HTTP {data.readyHttp}
         </p>
+        <div className="mt-3">
+          <StatusHistoryStrip />
+        </div>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
             to="/marketplace/simulate"
@@ -92,6 +96,18 @@ export function LiveOpsCenter({ data }: { data: LiveOpsSnapshot }) {
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
           >
             Product OS
+          </Link>
+          <Link
+            to="/marketplace/ready"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+          >
+            Ready probe
+          </Link>
+          <Link
+            to="/marketplace/receipts"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+          >
+            Receipts
           </Link>
         </div>
       </section>

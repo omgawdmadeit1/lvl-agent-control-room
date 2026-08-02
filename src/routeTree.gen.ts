@@ -35,6 +35,7 @@ import { Route as MarketplaceProductRouteImport } from './routes/marketplace/pro
 import { Route as MarketplaceProtocolsRouteImport } from './routes/marketplace/protocols'
 import { Route as MarketplaceRailsRouteImport } from './routes/marketplace/rails'
 import { Route as MarketplaceReadyRouteImport } from './routes/marketplace/ready'
+import { Route as MarketplaceReceiptsRouteImport } from './routes/marketplace/receipts'
 import { Route as MarketplaceSdkRouteImport } from './routes/marketplace/sdk'
 import { Route as MarketplaceSellRouteImport } from './routes/marketplace/sell'
 import { Route as MarketplaceShelfRouteImport } from './routes/marketplace/shelf'
@@ -180,6 +181,11 @@ const MarketplaceReadyRoute = MarketplaceReadyRouteImport.update({
   path: '/ready',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceReceiptsRoute = MarketplaceReceiptsRouteImport.update({
+  id: '/receipts',
+  path: '/receipts',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceSdkRoute = MarketplaceSdkRouteImport.update({
   id: '/sdk',
   path: '/sdk',
@@ -277,6 +283,7 @@ export interface FileRoutesByFullPath {
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/ready': typeof MarketplaceReadyRoute
+  '/marketplace/receipts': typeof MarketplaceReceiptsRoute
   '/marketplace/sdk': typeof MarketplaceSdkRoute
   '/marketplace/sell': typeof MarketplaceSellRoute
   '/marketplace/shelf': typeof MarketplaceShelfRoute
@@ -316,6 +323,7 @@ export interface FileRoutesByTo {
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/ready': typeof MarketplaceReadyRoute
+  '/marketplace/receipts': typeof MarketplaceReceiptsRoute
   '/marketplace/sdk': typeof MarketplaceSdkRoute
   '/marketplace/sell': typeof MarketplaceSellRoute
   '/marketplace/shelf': typeof MarketplaceShelfRoute
@@ -359,6 +367,7 @@ export interface FileRoutesById {
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/ready': typeof MarketplaceReadyRoute
+  '/marketplace/receipts': typeof MarketplaceReceiptsRoute
   '/marketplace/sdk': typeof MarketplaceSdkRoute
   '/marketplace/sell': typeof MarketplaceSellRoute
   '/marketplace/shelf': typeof MarketplaceShelfRoute
@@ -403,6 +412,7 @@ export interface FileRouteTypes {
     | '/marketplace/protocols'
     | '/marketplace/rails'
     | '/marketplace/ready'
+    | '/marketplace/receipts'
     | '/marketplace/sdk'
     | '/marketplace/sell'
     | '/marketplace/shelf'
@@ -442,6 +452,7 @@ export interface FileRouteTypes {
     | '/marketplace/protocols'
     | '/marketplace/rails'
     | '/marketplace/ready'
+    | '/marketplace/receipts'
     | '/marketplace/sdk'
     | '/marketplace/sell'
     | '/marketplace/shelf'
@@ -484,6 +495,7 @@ export interface FileRouteTypes {
     | '/marketplace/protocols'
     | '/marketplace/rails'
     | '/marketplace/ready'
+    | '/marketplace/receipts'
     | '/marketplace/sdk'
     | '/marketplace/sell'
     | '/marketplace/shelf'
@@ -696,6 +708,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceReadyRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/receipts': {
+      id: '/marketplace/receipts'
+      path: '/receipts'
+      fullPath: '/marketplace/receipts'
+      preLoaderRoute: typeof MarketplaceReceiptsRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/sdk': {
       id: '/marketplace/sdk'
       path: '/sdk'
@@ -815,6 +834,7 @@ interface MarketplaceRouteChildren {
   MarketplaceProtocolsRoute: typeof MarketplaceProtocolsRoute
   MarketplaceRailsRoute: typeof MarketplaceRailsRoute
   MarketplaceReadyRoute: typeof MarketplaceReadyRoute
+  MarketplaceReceiptsRoute: typeof MarketplaceReceiptsRoute
   MarketplaceSdkRoute: typeof MarketplaceSdkRoute
   MarketplaceSellRoute: typeof MarketplaceSellRoute
   MarketplaceShelfRoute: typeof MarketplaceShelfRoute
@@ -844,6 +864,7 @@ const MarketplaceRouteChildren: MarketplaceRouteChildren = {
   MarketplaceProtocolsRoute: MarketplaceProtocolsRoute,
   MarketplaceRailsRoute: MarketplaceRailsRoute,
   MarketplaceReadyRoute: MarketplaceReadyRoute,
+  MarketplaceReceiptsRoute: MarketplaceReceiptsRoute,
   MarketplaceSdkRoute: MarketplaceSdkRoute,
   MarketplaceSellRoute: MarketplaceSellRoute,
   MarketplaceShelfRoute: MarketplaceShelfRoute,

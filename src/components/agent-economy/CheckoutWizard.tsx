@@ -15,7 +15,10 @@ import {
 } from "@/lib/agent-economy/checkout";
 import { cn } from "@/components/ui/cn";
 import { UpsellRail } from "@/components/agent-economy/UpsellRail";
+import { PriceHistoryPanel } from "@/components/agent-economy/PriceHistoryPanel";
 import { loadMarketPrefs, saveMarketPrefs } from "@/lib/agent-economy/prefs";
+import { listLocalMandates } from "@/lib/agent-economy/browser-wallet";
+import { saveReceipt } from "@/lib/agent-economy/receipts";
 
 const inputCls =
   "h-11 w-full rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-sm outline-none focus:border-accent";
@@ -102,6 +105,14 @@ export function CheckoutWizard({
       push("missing challenge — run 402 first");
       return;
     }
+    const locals = listLocalMandates();
+    if (locals[0] && (challenge.amountUsd || 0) > locals[0].maxPerPurchaseUsd) {
+      push(`local mandate ${locals[0].id} blocks: max $${locals[0].maxPerPurchaseUsd}`);
+      return;
+    }
+    if (locals[0]) {
+      push(`local mandate ${locals[0].id} OK for $${challenge.amountUsd}`);
+    }
     if (mandate) {
       const cat =
         (outline?.category as string) ||
@@ -133,6 +144,16 @@ export function CheckoutWizard({
       const r = await attemptUnlock(skillId, txHash);
       setUnlockResult(r.data || { status: r.status, error: r.error });
       push(`unlock POST → HTTP ${r.status} (${r.ms}ms) ${r.ok ? "OK" : "rejected"}`);
+      saveReceipt({
+        skillId,
+        txHash,
+        status: r.ok ? "unlocked" : "failed",
+        amountUsd: challenge?.amountUsd,
+        atomic: challenge?.maxAmountRequired,
+        payTo: challenge?.payTo,
+        unlockBody: r.data,
+        note: "checkout wizard",
+      });
       setStep("unlock");
     } finally {
       setBusy(false);
@@ -436,6 +457,7 @@ export function CheckoutWizard({
             )}
           </section>
 
+          <PriceHistoryPanel skillId={skillId} />
           <UpsellRail skillId={skillId} />
 
           <section className="rounded-[var(--radius-xl)] border border-border bg-surface p-4">

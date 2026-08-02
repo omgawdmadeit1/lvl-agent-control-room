@@ -40,6 +40,7 @@ const LINKS = [
   { to: "/marketplace/access" as const, label: "Access" },
   { to: "/marketplace/mandates" as const, label: "Mandates" },
   { to: "/marketplace/ready" as const, label: "Ready" },
+  { to: "/marketplace/receipts" as const, label: "Receipts" },
 ];
 
 function MarketplaceLayout() {

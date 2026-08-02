@@ -147,6 +147,11 @@ const TILES: {
     label: "Ready probe",
     blurb: "challenge_shape diagnosis",
   },
+  {
+    to: "/marketplace/receipts",
+    label: "Receipts",
+    blurb: "Local vault + /api/purchases",
+  },
 ];
 
 function MarketplaceHub() {

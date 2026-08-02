@@ -13,6 +13,7 @@ import {
 } from "@/lib/agent-economy/browser-wallet";
 import { fetchChallenge } from "@/lib/agent-economy/checkout";
 import { unlockWithPayment } from "@/lib/agent-economy/mandate-complete";
+import { saveReceipt } from "@/lib/agent-economy/receipts";
 import { checkAllowance } from "@/lib/agent-economy/growth";
 import { cn } from "@/components/ui/cn";
 
@@ -99,6 +100,16 @@ export function PayUnlock({ initialSkill = "agent-x402-first-buy" }: { initialSk
         const u = await unlockWithPayment(skill, hash);
         setUnlock(u.data || { status: u.status });
         push(`unlock HTTP ${u.status}`);
+        saveReceipt({
+          skillId: skill,
+          txHash: hash,
+          status: u.status >= 200 && u.status < 300 ? "unlocked" : "failed",
+          amountUsd: challenge.challenge.amountUsd,
+          atomic: challenge.challenge.maxAmountRequired,
+          payTo: challenge.challenge.payTo,
+          unlockBody: u.data,
+        });
+        push("saved to receipt vault");
       }
     } catch (e) {
       push(`pay error: ${(e as Error).message}`);
@@ -114,6 +125,15 @@ export function PayUnlock({ initialSkill = "agent-x402-first-buy" }: { initialSk
       const u = await unlockWithPayment(skill, txHash);
       setUnlock(u.data || { status: u.status });
       push(`unlock HTTP ${u.status}`);
+      saveReceipt({
+        skillId: skill,
+        txHash,
+        status: u.status >= 200 && u.status < 300 ? "unlocked" : "failed",
+        amountUsd: challenge?.challenge.amountUsd,
+        atomic: challenge?.challenge.maxAmountRequired,
+        payTo: challenge?.challenge.payTo,
+        unlockBody: u.data,
+      });
     } finally {
       setBusy(false);
     }
@@ -247,6 +267,9 @@ export function PayUnlock({ initialSkill = "agent-x402-first-buy" }: { initialSk
           </p>
           <Link to="/marketplace/checkout" className="mt-2 inline-flex text-accent hover:underline">
             Or use checkout without wallet (manual txHash)
+          </Link>
+          <Link to="/marketplace/receipts" className="mt-2 ml-3 inline-flex text-muted hover:underline">
+            Receipt vault
           </Link>
         </div>
       )}
