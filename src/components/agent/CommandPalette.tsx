@@ -61,17 +61,25 @@ export function CommandPalette({
         id: "route-board",
         label: "Route: /ops/board",
         group: "Router",
-        run: () => {
-          window.location.href = "/ops/board";
-        },
+        run: () => { window.location.assign("/ops/board"); },
       },
       {
         id: "route-lab",
         label: "Route: /lab/router",
         group: "Router",
-        run: () => {
-          window.location.href = "/lab/router";
-        },
+        run: () => { window.location.assign("/lab/router"); },
+      },
+      {
+        id: "route-loaders",
+        label: "Route: /lab/loaders",
+        group: "Router",
+        run: () => { window.location.assign("/lab/loaders"); },
+      },
+      {
+        id: "route-health",
+        label: "Route: /ops/health",
+        group: "Router",
+        run: () => { window.location.assign("/ops/health"); },
       },
       { id: "approve", label: "Approve ship", hint: "A", group: "Run", run: () => approve() },
       {

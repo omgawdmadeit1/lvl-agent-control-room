@@ -119,9 +119,19 @@ export const useAgentSystem = create<Store>((set, get) => ({
     const saved = loadState();
     if (saved) {
       const base = createInitialState();
+      const tasks = saved.tasks || base.tasks;
+      const tasksDone = tasks.filter((x) => x.status === "DONE").length;
+      const p0Open = tasks.filter((x) => x.priority === "P0" && x.status !== "DONE").length;
       set({
         ...base,
         ...saved,
+        tasks,
+        metrics: {
+          tasksDone,
+          tasksTotal: tasks.length,
+          artifacts: (saved.artifacts || base.artifacts).length,
+          p0Open,
+        },
         liveScout: saved.liveScout || base.liveScout,
         tokenBuckets: saved.tokenBuckets || base.tokenBuckets,
         backpressure: saved.backpressure || base.backpressure,

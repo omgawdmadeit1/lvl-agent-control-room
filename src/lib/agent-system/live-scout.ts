@@ -149,6 +149,7 @@ export async function runLiveScoutSuite(_base = "https://lvlltd.com"): Promise<{
   // listing checks — two paths
   const slash = (await proxyLvlFetch({ data: { path: "/listings/agent-orchestration/" } })) as ProxiedResponse;
   const html = (await proxyLvlFetch({ data: { path: "/listings/agent-orchestration.html" } })) as ProxiedResponse;
+  // Only pure 404 on .html is a bug — 301/308/200 mean redirect or OK
   const sealBug = html.status === 404 && slash.status === 200;
   findings.push({
     id: "listing_canonical",

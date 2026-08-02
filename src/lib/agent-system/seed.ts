@@ -39,9 +39,20 @@ function task(
   };
 }
 
+function computeSeedMetrics(tasks: BoardTask[]) {
+  const tasksDone = tasks.filter((t) => t.status === "DONE").length;
+  const p0Open = tasks.filter((t) => t.priority === "P0" && t.status !== "DONE").length;
+  return {
+    tasksDone,
+    tasksTotal: tasks.length,
+    artifacts: 0,
+    p0Open,
+  };
+}
+
 export function createInitialState(): AgentSystemState {
   const runId = "run-lvlltd-focus-four";
-  return {
+  const state: AgentSystemState = {
     runId,
     goal:
       "Improve lvlltd.com agent skill marketplace: catalog quality, trust, checkout reliability, and multi-agent ops",
@@ -180,10 +191,12 @@ export function createInitialState(): AgentSystemState {
         level: "info",
       },
     ],
-    metrics: { tasksDone: 0, tasksTotal: 10, artifacts: 0, p0Open: 5 },
+    metrics: { tasksDone: 0, tasksTotal: 0, artifacts: 0, p0Open: 0 },
     backpressure: createBackpressureState(),
     tokenBuckets: bucketsToSnapshots(createDefaultBuckets()),
     liveScout: { status: "idle", summary: "Not run yet — pull live lvlltd.com probes.", findings: [] },
   };
+  state.metrics = computeSeedMetrics(state.tasks);
+  state.status = state.metrics.tasksDone > 0 ? "RUNNING" : "IDLE";
+  return state;
 }
-

@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, useRouter } from "@tanstack/react-router";
 import { loadHealthData } from "@/lib/router/loaders";
 import {
   LoaderError,
@@ -8,7 +8,10 @@ import {
 import { cn } from "@/components/ui/cn";
 
 export const Route = createFileRoute("/ops/health")({
-  loader: async () => loadHealthData(),
+  loader: async ({ location }) => {
+    const force = location.searchStr.includes("refresh=1");
+    return loadHealthData({ force });
+  },
   pendingComponent: () => <LoaderPending label="Probing lvlltd.com for health score…" />,
   pendingMs: 80,
   staleTime: 60_000,
@@ -29,6 +32,7 @@ export const Route = createFileRoute("/ops/health")({
 
 function HealthRoute() {
   const data = Route.useLoaderData();
+  const router = useRouter();
 
   return (
     <div className="space-y-4">
@@ -37,11 +41,24 @@ function HealthRoute() {
           <h1 className="text-xl font-semibold">Site health (route loader)</h1>
           <LoaderMetaBadge durationMs={data.durationMs} startedAt={data.startedAt} />
         </div>
-        <div className="flex gap-2">
-          <Link to="/ops/scout" className="text-xs text-accent hover:underline">
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              // bust probe cache + re-run loader
+              void import("@/lib/router/loaders").then(({ clearProbeCache }) => {
+                clearProbeCache();
+                void router.invalidate();
+              });
+            }}
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-xs font-medium"
+          >
+            Re-run loader
+          </button>
+          <Link to="/ops/scout" className="inline-flex h-11 items-center text-xs text-accent hover:underline">
             Scout loader →
           </Link>
-          <Link to="/lab/loaders" className="text-xs text-muted hover:underline">
+          <Link to="/lab/loaders" className="inline-flex h-11 items-center text-xs text-muted hover:underline">
             Lab
           </Link>
         </div>

@@ -25,6 +25,7 @@ export const Route = createRootRoute({
   }),
   component: RootComponent,
   notFoundComponent: NotFound,
+  errorComponent: RootError,
 });
 
 function RootComponent() {
@@ -47,6 +48,31 @@ function RootComponent() {
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function RootError({ error, reset }: { error: Error; reset: () => void }) {
+  return (
+    <main className="mx-auto flex min-h-dvh max-w-lg flex-col justify-center gap-4 px-4 py-16">
+      <p className="text-xs font-medium uppercase tracking-wide text-danger">Route error</p>
+      <h1 className="text-2xl font-semibold">Something failed in this route</h1>
+      <p className="text-sm text-muted">{error.message}</p>
+      <div className="flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={reset}
+          className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg"
+        >
+          Retry
+        </button>
+        <Link
+          to="/"
+          className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-4 text-sm font-medium"
+        >
+          Overview
+        </Link>
+      </div>
+    </main>
   );
 }
 
