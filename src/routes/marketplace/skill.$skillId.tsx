@@ -2,6 +2,8 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { loadCatalogSkills, loadX402Challenge } from "@/lib/marketplace/catalog";
 import { X402Panel } from "@/components/marketplace/X402Panel";
 import { LoaderPending, LoaderError } from "@/components/router/LoaderStates";
+import { PriceHistoryPanel } from "@/components/agent-economy/PriceHistoryPanel";
+import { UpsellRail } from "@/components/agent-economy/UpsellRail";
 
 export const Route = createFileRoute("/marketplace/skill/$skillId")({
   loader: async ({ params }) => {
@@ -54,13 +56,27 @@ function SkillPage() {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
+          <Link
+            to="/marketplace/pay"
+            search={{ skill: skill.id }}
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg"
+          >
+            Pay & unlock
+          </Link>
+          <Link
+            to="/marketplace/checkout"
+            search={{ skill: skill.id }}
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-4 text-sm"
+          >
+            Checkout
+          </Link>
           <a
             href={skill.listing_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-4 text-sm"
           >
-            Open on lvlltd.com
+            lvlltd.com
           </a>
           <Link
             to="/marketplace/catalog"
@@ -104,6 +120,11 @@ function SkillPage() {
             /api/pay?skill={skill.id}
           </p>
         </a>
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <PriceHistoryPanel skillId={skill.id} />
+        <UpsellRail skillId={skill.id} />
       </div>
 
       <X402Panel challenge={challenge} />
