@@ -11,7 +11,8 @@ export type StepArea =
   | "ux"
   | "perf"
   | "data"
-  | "ship";
+  | "ship"
+  | "product";
 
 export type BuildStep = {
   id: number;
