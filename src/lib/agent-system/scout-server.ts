@@ -54,7 +54,8 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
       path === "/robots.txt" ||
       path === "/sitemap.xml" ||
       path.startsWith("/sdk/") ||
-      path.startsWith("/about");
+      path.startsWith("/about") ||
+      path.startsWith("/agents");
     if (!allowed) {
       return { ok: false, status: 400, ms: 0, error: "path not allowlisted" };
     }

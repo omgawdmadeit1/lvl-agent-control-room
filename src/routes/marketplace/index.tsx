@@ -1,154 +1,169 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { loadMarketplaceSnapshot } from "@/lib/marketplace/catalog";
-import { RailsDiagram } from "@/components/marketplace/RailsDiagram";
-import { SkillCard } from "@/components/marketplace/SkillCard";
-import { LoaderPending, LoaderMetaBadge } from "@/components/router/LoaderStates";
 
 export const Route = createFileRoute("/marketplace/")({
-  loader: () => loadMarketplaceSnapshot(),
-  pendingComponent: () => <LoaderPending label="Loading live LVL catalog…" />,
-  pendingMs: 80,
-  staleTime: 60_000,
-  component: MarketplaceHome,
+  component: MarketplaceHub,
+  head: () => ({
+    meta: [
+      { title: "LVL Marketplace Control · agent commerce" },
+      {
+        name: "description",
+        content:
+          "Full-service x402 agent marketplace: checkout, ladder, live ops, SDK, sellers",
+      },
+    ],
+  }),
 });
 
-function MarketplaceHome() {
-  const data = Route.useLoaderData();
+const TILES: {
+  to: string;
+  label: string;
+  blurb: string;
+  search?: Record<string, string>;
+  primary?: boolean;
+}[] = [
+  {
+    to: "/marketplace/product",
+    label: "Product OS",
+    blurb: "End-to-end commercial product loop",
+    primary: true,
+  },
+  {
+    to: "/marketplace/checkout",
+    label: "Checkout wizard",
+    blurb: "Guided outline → 402 → unlock",
+    search: { skill: "agent-x402-first-buy" },
+    primary: true,
+  },
+  {
+    to: "/marketplace/live",
+    label: "Live ops",
+    blurb: "Ready, funnel, confirmed GMV",
+  },
+  {
+    to: "/marketplace/simulate",
+    label: "Buyer simulator",
+    blurb: "Dry-run integration score",
+  },
+  {
+    to: "/marketplace/ladder",
+    label: "Pricing ladder",
+    blurb: "$0.05 → tripwire → flagship",
+  },
+  {
+    to: "/marketplace/shelf",
+    label: "Premium shelf",
+    blurb: "High AOV packs from metrics",
+  },
+  {
+    to: "/marketplace/sdk",
+    label: "SDK playground",
+    blurb: "LvlAgentShop REST methods",
+  },
+  {
+    to: "/marketplace/kit",
+    label: "Integration kit",
+    blurb: "JSON for purchasing agents",
+  },
+  {
+    to: "/marketplace/wallet",
+    label: "Wallet ready",
+    blurb: "USDC balance vs required",
+  },
+  {
+    to: "/marketplace/agents",
+    label: "Agent directory",
+    blurb: "275 profiles → checkout",
+  },
+  {
+    to: "/marketplace/demand",
+    label: "Demand board",
+    blurb: "Confirmed unlock signals",
+  },
+  {
+    to: "/marketplace/sell",
+    label: "Seller hub",
+    blurb: "First-party + open market",
+  },
+  {
+    to: "/marketplace/agent-economy",
+    label: "Economy cockpit",
+    blurb: "Card, MCP tools, domains",
+  },
+  {
+    to: "/marketplace/catalog",
+    label: "Catalog",
+    blurb: "Browse live skills",
+  },
+  {
+    to: "/marketplace/x402",
+    label: "x402 inspector",
+    blurb: "Raw payment challenge",
+    search: { skill: "agent-x402-first-buy" },
+  },
+  {
+    to: "/marketplace/rails",
+    label: "Six rails",
+    blurb: "Marketplace architecture",
+  },
+];
 
+function MarketplaceHub() {
   return (
     <div className="space-y-6">
-      <section className="rounded-[var(--radius-xl)] border border-border bg-surface p-6">
-        <p className="text-xs font-medium uppercase tracking-wide text-accent">LVL LTD</p>
-        <h1 className="mt-1 text-2xl font-semibold tracking-tight">
-          x402 AI agent skill marketplace
-        </h1>
-        <p className="mt-2 max-w-2xl text-sm text-muted leading-relaxed">
-          Agents discover sealed skill packs, negotiate machine-readable terms, sample free
-          outlines, pay USDC on Base via x402, unlock packs, and leave an auditable proof trail —
-          the product thesis of{" "}
-          <a href="https://lvlltd.com" className="text-accent hover:underline" target="_blank" rel="noopener noreferrer">
-            lvlltd.com
-          </a>
-          .
+      <section className="rounded-[var(--radius-xl)] border border-border bg-surface p-6 sm:p-8">
+        <p className="text-xs font-semibold uppercase tracking-wide text-accent">
+          lvlltd.com · agent-native commerce
         </p>
-        <LoaderMetaBadge durationMs={data.durationMs} startedAt={data.loadedAt} />
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Link
-            to="/marketplace/catalog"
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg"
-          >
-            Browse catalog
-          </Link>
-          <Link
-            to="/marketplace/x402"
-            search={{ skill: "agent-orchestration" }}
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-4 text-sm font-medium"
-          >
-            Inspect x402 challenge
-          </Link>
-          <Link
-            to="/marketplace/rails"
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-4 text-sm"
-          >
-            Six rails
-          </Link>
-          <Link
-            to="/marketplace/product"
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg"
-          >
-            Agent Product OS
-          </Link>
+        <h1 className="mt-2 text-3xl font-semibold tracking-tight">
+          Marketplace Control Room
+        </h1>
+        <p className="mt-3 max-w-2xl text-sm text-muted leading-relaxed">
+          Full-service product for agents: discover, evaluate free, settle USDC on Base via x402,
+          unlock sealed packs, prove on a public ledger — then sell more with ladders, bundles, and
+          open-market escrow.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-2">
           <Link
             to="/marketplace/checkout"
             search={{ skill: "agent-x402-first-buy" }}
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-accent/40 bg-accent/10 px-4 text-sm font-semibold text-accent"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg"
           >
-            Checkout wizard
-          </Link>
-          <Link
-            to="/marketplace/live"
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-4 text-sm"
-          >
-            Live ops
+            $0.05 canary checkout
           </Link>
           <Link
             to="/marketplace/simulate"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-4 text-sm font-medium"
+          >
+            Run buyer sim
+          </Link>
+          <a
+            href="https://lvlltd.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-4 text-sm"
           >
-            Simulate buyer
-          </Link>
-          <Link
-            to="/marketplace/agent-economy"
-            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-accent/40 bg-accent/10 px-4 text-sm font-semibold text-accent"
-          >
-            Agent economy cockpit
-          </Link>
+            lvlltd.com ↗
+          </a>
         </div>
       </section>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          { label: "Skills", value: String(data.meta.skill_count || data.skills.length) },
-          { label: "Premium", value: String(data.premiumCount) },
-          { label: "Categories", value: String(data.categories.length) },
-          { label: "Catalog", value: `v${data.meta.version || "—"}` },
-        ].map((s) => (
-          <div key={s.label} className="rounded-[var(--radius-lg)] border border-border bg-surface p-4">
-            <p className="text-[10px] uppercase text-subtle">{s.label}</p>
-            <p className="mt-1 font-mono text-2xl font-semibold">{s.value}</p>
-          </div>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {TILES.map((t) => (
+          <Link
+            key={t.to + t.label}
+            to={t.to as "/marketplace/product"}
+            search={t.search as never}
+            className={
+              t.primary
+                ? "rounded-[var(--radius-xl)] border border-accent/40 bg-accent/5 p-4 transition hover:border-accent"
+                : "rounded-[var(--radius-xl)] border border-border bg-surface p-4 transition hover:border-accent/40"
+            }
+          >
+            <p className="text-sm font-semibold">{t.label}</p>
+            <p className="mt-1 text-xs text-muted leading-relaxed">{t.blurb}</p>
+          </Link>
         ))}
       </div>
-
-      <section className="rounded-[var(--radius-xl)] border border-border bg-surface p-5">
-        <h2 className="text-sm font-semibold">Price bands</h2>
-        <ul className="mt-3 grid gap-2 sm:grid-cols-5">
-          {data.priceBuckets.map((b) => (
-            <li key={b.label} className="rounded-[var(--radius-md)] border border-border bg-elevated p-3 text-center">
-              <p className="text-xs text-muted">{b.label}</p>
-              <p className="font-mono text-lg font-semibold">{b.count}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <RailsDiagram rails={data.rails} />
-
-      <section>
-        <div className="mb-3 flex items-center justify-between">
-          <h2 className="text-sm font-semibold">Featured skills</h2>
-          <Link to="/marketplace/catalog" className="text-xs text-accent hover:underline">
-            Full catalog →
-          </Link>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {data.featured.map((s) => (
-            <SkillCard key={s.id} skill={s} />
-          ))}
-        </div>
-      </section>
-
-      <section className="rounded-[var(--radius-xl)] border border-border bg-elevated p-5">
-        <h2 className="text-sm font-semibold">Why this exists</h2>
-        <ul className="mt-3 space-y-2 text-sm text-muted leading-relaxed">
-          <li>
-            <strong className="text-fg">Agent-native commerce</strong> — HTTP 402 is the checkout;
-            wallets and agents complete payment without a human cart UI.
-          </li>
-          <li>
-            <strong className="text-fg">Sealed packs</strong> — full skill content stays locked until
-            USDC proof; free outline/sample reduce adverse selection.
-          </li>
-          <li>
-            <strong className="text-fg">Composable inventory</strong> — catalog.json + shop + search
-            APIs so swarms can budget-filter and compose multi-skill workflows.
-          </li>
-          <li>
-            <strong className="text-fg">Trust rails</strong> — proof ledger, tiers, and governance
-            hooks for high-value automation.
-          </li>
-        </ul>
-      </section>
     </div>
   );
 }

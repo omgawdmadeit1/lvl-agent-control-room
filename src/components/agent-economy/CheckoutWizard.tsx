@@ -14,6 +14,7 @@ import {
   type SpendMandate,
 } from "@/lib/agent-economy/checkout";
 import { cn } from "@/components/ui/cn";
+import { UpsellRail } from "@/components/agent-economy/UpsellRail";
 
 const inputCls =
   "h-11 w-full rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-sm outline-none focus:border-accent";
@@ -414,6 +415,8 @@ export function CheckoutWizard({
               </pre>
             )}
           </section>
+
+          <UpsellRail skillId={skillId} />
 
           <section className="rounded-[var(--radius-xl)] border border-border bg-surface p-4">
             <h2 className="text-sm font-semibold">Event log</h2>

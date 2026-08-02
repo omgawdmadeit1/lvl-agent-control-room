@@ -19,6 +19,7 @@ import { Route as LabRouterRouteImport } from './routes/lab/router'
 import { Route as LabSettlementRouteImport } from './routes/lab/settlement'
 import { Route as MarketplaceIndexRouteImport } from './routes/marketplace/index'
 import { Route as MarketplaceAgentEconomyRouteImport } from './routes/marketplace/agent-economy'
+import { Route as MarketplaceAgentsRouteImport } from './routes/marketplace/agents'
 import { Route as MarketplaceCatalogRouteImport } from './routes/marketplace/catalog'
 import { Route as MarketplaceCheckoutRouteImport } from './routes/marketplace/checkout'
 import { Route as MarketplaceDemandRouteImport } from './routes/marketplace/demand'
@@ -29,7 +30,9 @@ import { Route as MarketplaceProductRouteImport } from './routes/marketplace/pro
 import { Route as MarketplaceRailsRouteImport } from './routes/marketplace/rails'
 import { Route as MarketplaceSdkRouteImport } from './routes/marketplace/sdk'
 import { Route as MarketplaceSellRouteImport } from './routes/marketplace/sell'
+import { Route as MarketplaceShelfRouteImport } from './routes/marketplace/shelf'
 import { Route as MarketplaceSimulateRouteImport } from './routes/marketplace/simulate'
+import { Route as MarketplaceWalletRouteImport } from './routes/marketplace/wallet'
 import { Route as MarketplaceX402RouteImport } from './routes/marketplace/x402'
 import { Route as OpsIndexRouteImport } from './routes/ops/index'
 import { Route as OpsBoardRouteImport } from './routes/ops/board'
@@ -89,6 +92,11 @@ const MarketplaceAgentEconomyRoute = MarketplaceAgentEconomyRouteImport.update({
   path: '/agent-economy',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceAgentsRoute = MarketplaceAgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceCatalogRoute = MarketplaceCatalogRouteImport.update({
   id: '/catalog',
   path: '/catalog',
@@ -139,9 +147,19 @@ const MarketplaceSellRoute = MarketplaceSellRouteImport.update({
   path: '/sell',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceShelfRoute = MarketplaceShelfRouteImport.update({
+  id: '/shelf',
+  path: '/shelf',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceSimulateRoute = MarketplaceSimulateRouteImport.update({
   id: '/simulate',
   path: '/simulate',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceWalletRoute = MarketplaceWalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
   getParentRoute: () => MarketplaceRoute,
 } as any)
 const MarketplaceX402Route = MarketplaceX402RouteImport.update({
@@ -195,6 +213,7 @@ export interface FileRoutesByFullPath {
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
+  '/marketplace/agents': typeof MarketplaceAgentsRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
@@ -205,7 +224,9 @@ export interface FileRoutesByFullPath {
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/sdk': typeof MarketplaceSdkRoute
   '/marketplace/sell': typeof MarketplaceSellRoute
+  '/marketplace/shelf': typeof MarketplaceShelfRoute
   '/marketplace/simulate': typeof MarketplaceSimulateRoute
+  '/marketplace/wallet': typeof MarketplaceWalletRoute
   '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -223,6 +244,7 @@ export interface FileRoutesByTo {
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
+  '/marketplace/agents': typeof MarketplaceAgentsRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
@@ -233,7 +255,9 @@ export interface FileRoutesByTo {
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/sdk': typeof MarketplaceSdkRoute
   '/marketplace/sell': typeof MarketplaceSellRoute
+  '/marketplace/shelf': typeof MarketplaceShelfRoute
   '/marketplace/simulate': typeof MarketplaceSimulateRoute
+  '/marketplace/wallet': typeof MarketplaceWalletRoute
   '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -255,6 +279,7 @@ export interface FileRoutesById {
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
+  '/marketplace/agents': typeof MarketplaceAgentsRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
@@ -265,7 +290,9 @@ export interface FileRoutesById {
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/sdk': typeof MarketplaceSdkRoute
   '/marketplace/sell': typeof MarketplaceSellRoute
+  '/marketplace/shelf': typeof MarketplaceShelfRoute
   '/marketplace/simulate': typeof MarketplaceSimulateRoute
+  '/marketplace/wallet': typeof MarketplaceWalletRoute
   '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -288,6 +315,7 @@ export interface FileRouteTypes {
     | '/lab/router'
     | '/lab/settlement'
     | '/marketplace/agent-economy'
+    | '/marketplace/agents'
     | '/marketplace/catalog'
     | '/marketplace/checkout'
     | '/marketplace/demand'
@@ -298,7 +326,9 @@ export interface FileRouteTypes {
     | '/marketplace/rails'
     | '/marketplace/sdk'
     | '/marketplace/sell'
+    | '/marketplace/shelf'
     | '/marketplace/simulate'
+    | '/marketplace/wallet'
     | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
@@ -316,6 +346,7 @@ export interface FileRouteTypes {
     | '/lab/router'
     | '/lab/settlement'
     | '/marketplace/agent-economy'
+    | '/marketplace/agents'
     | '/marketplace/catalog'
     | '/marketplace/checkout'
     | '/marketplace/demand'
@@ -326,7 +357,9 @@ export interface FileRouteTypes {
     | '/marketplace/rails'
     | '/marketplace/sdk'
     | '/marketplace/sell'
+    | '/marketplace/shelf'
     | '/marketplace/simulate'
+    | '/marketplace/wallet'
     | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
@@ -347,6 +380,7 @@ export interface FileRouteTypes {
     | '/lab/router'
     | '/lab/settlement'
     | '/marketplace/agent-economy'
+    | '/marketplace/agents'
     | '/marketplace/catalog'
     | '/marketplace/checkout'
     | '/marketplace/demand'
@@ -357,7 +391,9 @@ export interface FileRouteTypes {
     | '/marketplace/rails'
     | '/marketplace/sdk'
     | '/marketplace/sell'
+    | '/marketplace/shelf'
     | '/marketplace/simulate'
+    | '/marketplace/wallet'
     | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
@@ -452,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceAgentEconomyRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/agents': {
+      id: '/marketplace/agents'
+      path: '/agents'
+      fullPath: '/marketplace/agents'
+      preLoaderRoute: typeof MarketplaceAgentsRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/catalog': {
       id: '/marketplace/catalog'
       path: '/catalog'
@@ -522,11 +565,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceSellRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/shelf': {
+      id: '/marketplace/shelf'
+      path: '/shelf'
+      fullPath: '/marketplace/shelf'
+      preLoaderRoute: typeof MarketplaceShelfRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/simulate': {
       id: '/marketplace/simulate'
       path: '/simulate'
       fullPath: '/marketplace/simulate'
       preLoaderRoute: typeof MarketplaceSimulateRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/wallet': {
+      id: '/marketplace/wallet'
+      path: '/wallet'
+      fullPath: '/marketplace/wallet'
+      preLoaderRoute: typeof MarketplaceWalletRouteImport
       parentRoute: typeof MarketplaceRoute
     }
     '/marketplace/x402': {
@@ -590,6 +647,7 @@ declare module '@tanstack/react-router' {
 
 interface MarketplaceRouteChildren {
   MarketplaceAgentEconomyRoute: typeof MarketplaceAgentEconomyRoute
+  MarketplaceAgentsRoute: typeof MarketplaceAgentsRoute
   MarketplaceCatalogRoute: typeof MarketplaceCatalogRoute
   MarketplaceCheckoutRoute: typeof MarketplaceCheckoutRoute
   MarketplaceDemandRoute: typeof MarketplaceDemandRoute
@@ -600,7 +658,9 @@ interface MarketplaceRouteChildren {
   MarketplaceRailsRoute: typeof MarketplaceRailsRoute
   MarketplaceSdkRoute: typeof MarketplaceSdkRoute
   MarketplaceSellRoute: typeof MarketplaceSellRoute
+  MarketplaceShelfRoute: typeof MarketplaceShelfRoute
   MarketplaceSimulateRoute: typeof MarketplaceSimulateRoute
+  MarketplaceWalletRoute: typeof MarketplaceWalletRoute
   MarketplaceX402Route: typeof MarketplaceX402Route
   MarketplaceIndexRoute: typeof MarketplaceIndexRoute
   MarketplaceSkillSkillIdRoute: typeof MarketplaceSkillSkillIdRoute
@@ -608,6 +668,7 @@ interface MarketplaceRouteChildren {
 
 const MarketplaceRouteChildren: MarketplaceRouteChildren = {
   MarketplaceAgentEconomyRoute: MarketplaceAgentEconomyRoute,
+  MarketplaceAgentsRoute: MarketplaceAgentsRoute,
   MarketplaceCatalogRoute: MarketplaceCatalogRoute,
   MarketplaceCheckoutRoute: MarketplaceCheckoutRoute,
   MarketplaceDemandRoute: MarketplaceDemandRoute,
@@ -618,7 +679,9 @@ const MarketplaceRouteChildren: MarketplaceRouteChildren = {
   MarketplaceRailsRoute: MarketplaceRailsRoute,
   MarketplaceSdkRoute: MarketplaceSdkRoute,
   MarketplaceSellRoute: MarketplaceSellRoute,
+  MarketplaceShelfRoute: MarketplaceShelfRoute,
   MarketplaceSimulateRoute: MarketplaceSimulateRoute,
+  MarketplaceWalletRoute: MarketplaceWalletRoute,
   MarketplaceX402Route: MarketplaceX402Route,
   MarketplaceIndexRoute: MarketplaceIndexRoute,
   MarketplaceSkillSkillIdRoute: MarketplaceSkillSkillIdRoute,
