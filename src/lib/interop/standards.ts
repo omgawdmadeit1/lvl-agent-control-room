@@ -82,13 +82,14 @@ export const INTEROP_STANDARDS: InteropStandard[] = [
       { label: "Linux Foundation A2A", href: "https://www.linuxfoundation.org/press/a2a-protocol-surpasses-150-organizations-lands-in-major-cloud-platforms-and-sees-enterprise-production-use-in-first-year" },
     ],
     lvl: {
-      support: "partial",
+      support: "live",
       surfaces: [
+        "https://lvlltd.com/.well-known/agent-card.json",
+        "https://lvlltd.com/api/a2a",
+        "/marketplace/agent-economy",
         "/skills/agent-to-agent-a2a-protocols",
-        "Agent Card author in A2A Workbench",
-        "lvlltd skill: agent-to-agent-a2a-protocols",
       ],
-      notes: "Workbench authors cards + task lifecycle; production Agent Card hosting is next.",
+      notes: "Production Agent Card live with x402_http + ap2_mandate security schemes; A2A JSON-RPC at /api/a2a.",
     },
   },
   {
@@ -328,8 +329,8 @@ export const LVL_COMPLIANCE: ComplianceRow[] = [
   {
     capability: "Agent Card publishing",
     standard: "A2A",
-    lvlStatus: "partial",
-    evidence: "Workbench authors cards; .well-known host TBD",
+    lvlStatus: "live",
+    evidence: "/.well-known/agent-card.json + agent.json (protocol 1.0, x402 security schemes)",
   },
   {
     capability: "Task lifecycle streaming",
@@ -340,8 +341,8 @@ export const LVL_COMPLIANCE: ComplianceRow[] = [
   {
     capability: "MCP tool server",
     standard: "MCP",
-    lvlStatus: "gap",
-    evidence: "Natural export of catalog/pay/proof as MCP tools",
+    lvlStatus: "partial",
+    evidence: "Agent Economy Cockpit exports tools/list JSON; hosted MCP server still TBD",
   },
   {
     capability: "Spend mandates / AP2",

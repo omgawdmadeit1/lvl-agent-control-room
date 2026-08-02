@@ -15,6 +15,7 @@ const NAV = [
   { href: "/lab/interop", label: "Interop", route: true },
   { href: "/lab/settlement", label: "Settlement", route: true },
   { href: "/marketplace", label: "Marketplace", route: true },
+  { href: "/marketplace/agent-economy", label: "Agent economy", route: true },
   { href: "/skills", label: "Skill packs", route: true },
   { href: "https://lvlltd.com", label: "lvlltd.com", external: true },
   { href: "#drawer-code", label: "Drawer code" },
@@ -70,7 +71,7 @@ export function QuickNav() {
             <li key={item.href}>
               {"route" in item && item.route ? (
                 <Link
-                  to={item.href as "/ops/board" | "/lab/router" | "/lab/loaders" | "/lab/interop" | "/lab/settlement" | "/marketplace" | "/skills"}
+                  to={item.href as "/ops/board" | "/lab/router" | "/lab/loaders" | "/lab/interop" | "/lab/settlement" | "/marketplace" | "/marketplace/agent-economy" | "/skills"}
                   className="inline-flex h-11 min-target items-center rounded-[var(--radius-md)] px-3 text-xs font-medium text-muted transition hover:bg-elevated hover:text-fg"
                 >
                   {item.label}

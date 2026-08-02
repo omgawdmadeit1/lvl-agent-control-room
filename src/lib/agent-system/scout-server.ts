@@ -33,8 +33,16 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
       path.startsWith("/listings/") ||
       path.startsWith("/status") ||
       path.startsWith("/skills/") ||
+      path.startsWith("/.well-known/") ||
+      path === "/agent.json" ||
+      path === "/fleet.json" ||
+      path === "/protocols.json" ||
+      path === "/openapi.json" ||
+      path === "/llms.txt" ||
       path === "/robots.txt" ||
-      path === "/sitemap.xml";
+      path === "/sitemap.xml" ||
+      path.startsWith("/sdk/") ||
+      path.startsWith("/about");
     if (!allowed) {
       return { ok: false, status: 400, ms: 0, error: "path not allowlisted" };
     }

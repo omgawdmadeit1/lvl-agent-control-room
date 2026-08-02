@@ -18,6 +18,7 @@ import { Route as LabLoadersRouteImport } from './routes/lab/loaders'
 import { Route as LabRouterRouteImport } from './routes/lab/router'
 import { Route as LabSettlementRouteImport } from './routes/lab/settlement'
 import { Route as MarketplaceIndexRouteImport } from './routes/marketplace/index'
+import { Route as MarketplaceAgentEconomyRouteImport } from './routes/marketplace/agent-economy'
 import { Route as MarketplaceCatalogRouteImport } from './routes/marketplace/catalog'
 import { Route as MarketplaceRailsRouteImport } from './routes/marketplace/rails'
 import { Route as MarketplaceX402RouteImport } from './routes/marketplace/x402'
@@ -72,6 +73,11 @@ const LabSettlementRoute = LabSettlementRouteImport.update({
 const MarketplaceIndexRoute = MarketplaceIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceAgentEconomyRoute = MarketplaceAgentEconomyRouteImport.update({
+  id: '/agent-economy',
+  path: '/agent-economy',
   getParentRoute: () => MarketplaceRoute,
 } as any)
 const MarketplaceCatalogRoute = MarketplaceCatalogRouteImport.update({
@@ -134,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
+  '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/x402': typeof MarketplaceX402Route
@@ -152,6 +159,7 @@ export interface FileRoutesByTo {
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
+  '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/x402': typeof MarketplaceX402Route
@@ -174,6 +182,7 @@ export interface FileRoutesById {
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
+  '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/x402': typeof MarketplaceX402Route
@@ -197,6 +206,7 @@ export interface FileRouteTypes {
     | '/lab/loaders'
     | '/lab/router'
     | '/lab/settlement'
+    | '/marketplace/agent-economy'
     | '/marketplace/catalog'
     | '/marketplace/rails'
     | '/marketplace/x402'
@@ -215,6 +225,7 @@ export interface FileRouteTypes {
     | '/lab/loaders'
     | '/lab/router'
     | '/lab/settlement'
+    | '/marketplace/agent-economy'
     | '/marketplace/catalog'
     | '/marketplace/rails'
     | '/marketplace/x402'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '/lab/loaders'
     | '/lab/router'
     | '/lab/settlement'
+    | '/marketplace/agent-economy'
     | '/marketplace/catalog'
     | '/marketplace/rails'
     | '/marketplace/x402'
@@ -325,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceIndexRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/agent-economy': {
+      id: '/marketplace/agent-economy'
+      path: '/agent-economy'
+      fullPath: '/marketplace/agent-economy'
+      preLoaderRoute: typeof MarketplaceAgentEconomyRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/catalog': {
       id: '/marketplace/catalog'
       path: '/catalog'
@@ -399,6 +418,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface MarketplaceRouteChildren {
+  MarketplaceAgentEconomyRoute: typeof MarketplaceAgentEconomyRoute
   MarketplaceCatalogRoute: typeof MarketplaceCatalogRoute
   MarketplaceRailsRoute: typeof MarketplaceRailsRoute
   MarketplaceX402Route: typeof MarketplaceX402Route
@@ -407,6 +427,7 @@ interface MarketplaceRouteChildren {
 }
 
 const MarketplaceRouteChildren: MarketplaceRouteChildren = {
+  MarketplaceAgentEconomyRoute: MarketplaceAgentEconomyRoute,
   MarketplaceCatalogRoute: MarketplaceCatalogRoute,
   MarketplaceRailsRoute: MarketplaceRailsRoute,
   MarketplaceX402Route: MarketplaceX402Route,
