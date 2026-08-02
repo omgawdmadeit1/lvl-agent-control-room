@@ -47,6 +47,7 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
       path.startsWith("/.well-known/") ||
       path === "/agent.json" ||
       path === "/fleet.json" ||
+      path === "/open-market.json" ||
       path === "/protocols.json" ||
       path === "/openapi.json" ||
       path === "/llms.txt" ||

@@ -22,8 +22,11 @@ import { Route as MarketplaceAgentEconomyRouteImport } from './routes/marketplac
 import { Route as MarketplaceCatalogRouteImport } from './routes/marketplace/catalog'
 import { Route as MarketplaceCheckoutRouteImport } from './routes/marketplace/checkout'
 import { Route as MarketplaceDemandRouteImport } from './routes/marketplace/demand'
+import { Route as MarketplaceLadderRouteImport } from './routes/marketplace/ladder'
 import { Route as MarketplaceProductRouteImport } from './routes/marketplace/product'
 import { Route as MarketplaceRailsRouteImport } from './routes/marketplace/rails'
+import { Route as MarketplaceSdkRouteImport } from './routes/marketplace/sdk'
+import { Route as MarketplaceSellRouteImport } from './routes/marketplace/sell'
 import { Route as MarketplaceX402RouteImport } from './routes/marketplace/x402'
 import { Route as OpsIndexRouteImport } from './routes/ops/index'
 import { Route as OpsBoardRouteImport } from './routes/ops/board'
@@ -98,6 +101,11 @@ const MarketplaceDemandRoute = MarketplaceDemandRouteImport.update({
   path: '/demand',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceLadderRoute = MarketplaceLadderRouteImport.update({
+  id: '/ladder',
+  path: '/ladder',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceProductRoute = MarketplaceProductRouteImport.update({
   id: '/product',
   path: '/product',
@@ -106,6 +114,16 @@ const MarketplaceProductRoute = MarketplaceProductRouteImport.update({
 const MarketplaceRailsRoute = MarketplaceRailsRouteImport.update({
   id: '/rails',
   path: '/rails',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceSdkRoute = MarketplaceSdkRouteImport.update({
+  id: '/sdk',
+  path: '/sdk',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceSellRoute = MarketplaceSellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
   getParentRoute: () => MarketplaceRoute,
 } as any)
 const MarketplaceX402Route = MarketplaceX402RouteImport.update({
@@ -162,8 +180,11 @@ export interface FileRoutesByFullPath {
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
+  '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
+  '/marketplace/sdk': typeof MarketplaceSdkRoute
+  '/marketplace/sell': typeof MarketplaceSellRoute
   '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -184,8 +205,11 @@ export interface FileRoutesByTo {
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
+  '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
+  '/marketplace/sdk': typeof MarketplaceSdkRoute
+  '/marketplace/sell': typeof MarketplaceSellRoute
   '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -210,8 +234,11 @@ export interface FileRoutesById {
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
+  '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
+  '/marketplace/sdk': typeof MarketplaceSdkRoute
+  '/marketplace/sell': typeof MarketplaceSellRoute
   '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -237,8 +264,11 @@ export interface FileRouteTypes {
     | '/marketplace/catalog'
     | '/marketplace/checkout'
     | '/marketplace/demand'
+    | '/marketplace/ladder'
     | '/marketplace/product'
     | '/marketplace/rails'
+    | '/marketplace/sdk'
+    | '/marketplace/sell'
     | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
@@ -259,8 +289,11 @@ export interface FileRouteTypes {
     | '/marketplace/catalog'
     | '/marketplace/checkout'
     | '/marketplace/demand'
+    | '/marketplace/ladder'
     | '/marketplace/product'
     | '/marketplace/rails'
+    | '/marketplace/sdk'
+    | '/marketplace/sell'
     | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
@@ -284,8 +317,11 @@ export interface FileRouteTypes {
     | '/marketplace/catalog'
     | '/marketplace/checkout'
     | '/marketplace/demand'
+    | '/marketplace/ladder'
     | '/marketplace/product'
     | '/marketplace/rails'
+    | '/marketplace/sdk'
+    | '/marketplace/sell'
     | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
@@ -401,6 +437,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceDemandRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/ladder': {
+      id: '/marketplace/ladder'
+      path: '/ladder'
+      fullPath: '/marketplace/ladder'
+      preLoaderRoute: typeof MarketplaceLadderRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/product': {
       id: '/marketplace/product'
       path: '/product'
@@ -413,6 +456,20 @@ declare module '@tanstack/react-router' {
       path: '/rails'
       fullPath: '/marketplace/rails'
       preLoaderRoute: typeof MarketplaceRailsRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/sdk': {
+      id: '/marketplace/sdk'
+      path: '/sdk'
+      fullPath: '/marketplace/sdk'
+      preLoaderRoute: typeof MarketplaceSdkRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/sell': {
+      id: '/marketplace/sell'
+      path: '/sell'
+      fullPath: '/marketplace/sell'
+      preLoaderRoute: typeof MarketplaceSellRouteImport
       parentRoute: typeof MarketplaceRoute
     }
     '/marketplace/x402': {
@@ -479,8 +536,11 @@ interface MarketplaceRouteChildren {
   MarketplaceCatalogRoute: typeof MarketplaceCatalogRoute
   MarketplaceCheckoutRoute: typeof MarketplaceCheckoutRoute
   MarketplaceDemandRoute: typeof MarketplaceDemandRoute
+  MarketplaceLadderRoute: typeof MarketplaceLadderRoute
   MarketplaceProductRoute: typeof MarketplaceProductRoute
   MarketplaceRailsRoute: typeof MarketplaceRailsRoute
+  MarketplaceSdkRoute: typeof MarketplaceSdkRoute
+  MarketplaceSellRoute: typeof MarketplaceSellRoute
   MarketplaceX402Route: typeof MarketplaceX402Route
   MarketplaceIndexRoute: typeof MarketplaceIndexRoute
   MarketplaceSkillSkillIdRoute: typeof MarketplaceSkillSkillIdRoute
@@ -491,8 +551,11 @@ const MarketplaceRouteChildren: MarketplaceRouteChildren = {
   MarketplaceCatalogRoute: MarketplaceCatalogRoute,
   MarketplaceCheckoutRoute: MarketplaceCheckoutRoute,
   MarketplaceDemandRoute: MarketplaceDemandRoute,
+  MarketplaceLadderRoute: MarketplaceLadderRoute,
   MarketplaceProductRoute: MarketplaceProductRoute,
   MarketplaceRailsRoute: MarketplaceRailsRoute,
+  MarketplaceSdkRoute: MarketplaceSdkRoute,
+  MarketplaceSellRoute: MarketplaceSellRoute,
   MarketplaceX402Route: MarketplaceX402Route,
   MarketplaceIndexRoute: MarketplaceIndexRoute,
   MarketplaceSkillSkillIdRoute: MarketplaceSkillSkillIdRoute,

@@ -134,6 +134,24 @@ export function AgentProductOS({ data }: { data: ProductSnapshot }) {
             Demand board
           </Link>
           <Link
+            to="/marketplace/ladder"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-medium"
+          >
+            Ladder
+          </Link>
+          <Link
+            to="/marketplace/sdk"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-medium"
+          >
+            SDK
+          </Link>
+          <Link
+            to="/marketplace/sell"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-medium"
+          >
+            Sell
+          </Link>
+          <Link
             to="/marketplace/x402"
             search={{ skill: data.featured.start_here?.id || "agent-x402-first-buy" }}
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
