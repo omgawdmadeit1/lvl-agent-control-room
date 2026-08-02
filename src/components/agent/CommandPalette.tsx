@@ -94,6 +94,12 @@ export function CommandPalette({
         run: () => { window.location.assign("/skills"); },
       },
       {
+        id: "route-interop",
+        label: "Route: /lab/interop (standards)",
+        group: "Router",
+        run: () => { window.location.assign("/lab/interop"); },
+      },
+      {
         id: "route-catalog",
         label: "Route: /marketplace/catalog",
         group: "Router",

@@ -57,6 +57,12 @@ export const APP_ROUTES = [
     description: "Twelve LVL skills as full products",
     group: "product",
   },
+  {
+    to: "/lab/interop",
+    label: "Interop standards",
+    description: "MCP, A2A, x402, AP2 composition + LVL compliance",
+    group: "lab",
+  },
 ] as const;
 
 export type AppRouteTo = (typeof APP_ROUTES)[number]["to"];

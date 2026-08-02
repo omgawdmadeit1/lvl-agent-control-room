@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as OpsRouteImport } from './routes/ops'
 import { Route as SkillsRouteImport } from './routes/skills'
+import { Route as LabInteropRouteImport } from './routes/lab/interop'
 import { Route as LabLoadersRouteImport } from './routes/lab/loaders'
 import { Route as LabRouterRouteImport } from './routes/lab/router'
 import { Route as MarketplaceIndexRouteImport } from './routes/marketplace/index'
@@ -45,6 +46,11 @@ const OpsRoute = OpsRouteImport.update({
 const SkillsRoute = SkillsRouteImport.update({
   id: '/skills',
   path: '/skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabInteropRoute = LabInteropRouteImport.update({
+  id: '/lab/interop',
+  path: '/lab/interop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LabLoadersRoute = LabLoadersRouteImport.update({
@@ -118,6 +124,7 @@ export interface FileRoutesByFullPath {
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/ops': typeof OpsRouteWithChildren
   '/skills': typeof SkillsRouteWithChildren
+  '/lab/interop': typeof LabInteropRoute
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/lab/interop': typeof LabInteropRoute
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/marketplace': typeof MarketplaceRouteWithChildren
   '/ops': typeof OpsRouteWithChildren
   '/skills': typeof SkillsRouteWithChildren
+  '/lab/interop': typeof LabInteropRoute
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/ops'
     | '/skills'
+    | '/lab/interop'
     | '/lab/loaders'
     | '/lab/router'
     | '/marketplace/catalog'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/lab/interop'
     | '/lab/loaders'
     | '/lab/router'
     | '/marketplace/catalog'
@@ -210,6 +221,7 @@ export interface FileRouteTypes {
     | '/marketplace'
     | '/ops'
     | '/skills'
+    | '/lab/interop'
     | '/lab/loaders'
     | '/lab/router'
     | '/marketplace/catalog'
@@ -230,6 +242,7 @@ export interface RootRouteChildren {
   MarketplaceRoute: typeof MarketplaceRouteWithChildren
   OpsRoute: typeof OpsRouteWithChildren
   SkillsRoute: typeof SkillsRouteWithChildren
+  LabInteropRoute: typeof LabInteropRoute
   LabLoadersRoute: typeof LabLoadersRoute
   LabRouterRoute: typeof LabRouterRoute
 }
@@ -262,6 +275,13 @@ declare module '@tanstack/react-router' {
       path: '/skills'
       fullPath: '/skills'
       preLoaderRoute: typeof SkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/interop': {
+      id: '/lab/interop'
+      path: '/lab/interop'
+      fullPath: '/lab/interop'
+      preLoaderRoute: typeof LabInteropRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lab/loaders': {
@@ -412,6 +432,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceRoute: MarketplaceRouteWithChildren,
   OpsRoute: OpsRouteWithChildren,
   SkillsRoute: SkillsRouteWithChildren,
+  LabInteropRoute: LabInteropRoute,
   LabLoadersRoute: LabLoadersRoute,
   LabRouterRoute: LabRouterRoute,
 }
