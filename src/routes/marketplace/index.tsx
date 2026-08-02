@@ -35,6 +35,13 @@ const TILES: {
     primary: true,
   },
   {
+    to: "/marketplace/pay",
+    label: "Pay & unlock",
+    blurb: "Browser wallet USDC → sealed pack",
+    search: { skill: "agent-x402-first-buy" },
+    primary: true,
+  },
+  {
     to: "/marketplace/live",
     label: "Live ops",
     blurb: "Ready, funnel, confirmed GMV",
@@ -134,6 +141,11 @@ const TILES: {
     to: "/marketplace/mandates",
     label: "Mandates",
     blurb: "AP2 draft + sign message",
+  },
+  {
+    to: "/marketplace/ready",
+    label: "Ready probe",
+    blurb: "challenge_shape diagnosis",
   },
 ];
 

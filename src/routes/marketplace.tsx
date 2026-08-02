@@ -22,6 +22,7 @@ const LINKS = [
   { to: "/marketplace/agent-economy" as const, label: "Agent economy" },
   { to: "/marketplace/product" as const, label: "Product OS" },
   { to: "/marketplace/checkout" as const, label: "Checkout" },
+  { to: "/marketplace/pay" as const, label: "Pay" },
   { to: "/marketplace/demand" as const, label: "Demand" },
   { to: "/marketplace/ladder" as const, label: "Ladder" },
   { to: "/marketplace/sdk" as const, label: "SDK" },
@@ -38,6 +39,7 @@ const LINKS = [
   { to: "/marketplace/mcp" as const, label: "MCP" },
   { to: "/marketplace/access" as const, label: "Access" },
   { to: "/marketplace/mandates" as const, label: "Mandates" },
+  { to: "/marketplace/ready" as const, label: "Ready" },
 ];
 
 function MarketplaceLayout() {

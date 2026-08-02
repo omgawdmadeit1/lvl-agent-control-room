@@ -171,6 +171,13 @@ export function CheckoutWizard({
             Product OS
           </Link>
           <Link
+            to="/marketplace/pay"
+            search={{ skill: skillId }}
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+          >
+            Pay with wallet
+          </Link>
+          <Link
             to="/marketplace/x402"
             search={{ skill: skillId }}
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-xs"

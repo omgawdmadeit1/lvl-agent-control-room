@@ -121,9 +121,16 @@ export function AgentProductOS({ data }: { data: ProductSnapshot }) {
             Economy cockpit
           </Link>
           <Link
-            to="/marketplace/checkout"
+            to="/marketplace/pay"
             search={{ skill: data.featured.start_here?.id || "agent-x402-first-buy" }}
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+          >
+            Pay & unlock (wallet)
+          </Link>
+          <Link
+            to="/marketplace/checkout"
+            search={{ skill: data.featured.start_here?.id || "agent-x402-first-buy" }}
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-xs font-semibold"
           >
             Checkout wizard
           </Link>

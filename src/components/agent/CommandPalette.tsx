@@ -106,6 +106,12 @@ export function CommandPalette({
         run: () => { window.location.assign("/marketplace/checkout"); },
       },
       {
+        id: "route-pay-unlock",
+        label: "Route: /marketplace/pay (wallet)",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/pay"); },
+      },
+      {
         id: "route-demand",
         label: "Route: /marketplace/demand",
         group: "Router",
