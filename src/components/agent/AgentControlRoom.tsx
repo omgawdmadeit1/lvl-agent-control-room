@@ -365,6 +365,12 @@ export function AgentControlRoom() {
               >
                 Catalog
               </Link>
+              <Link
+                to="/skills"
+                className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-semibold"
+              >
+                12 skill products
+              </Link>
             </div>
           </div>
         </section>

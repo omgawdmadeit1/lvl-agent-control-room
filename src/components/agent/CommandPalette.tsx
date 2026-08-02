@@ -88,6 +88,12 @@ export function CommandPalette({
         run: () => { window.location.assign("/marketplace"); },
       },
       {
+        id: "route-skills",
+        label: "Route: /skills (Skill Pack Studio)",
+        group: "Router",
+        run: () => { window.location.assign("/skills"); },
+      },
+      {
         id: "route-catalog",
         label: "Route: /marketplace/catalog",
         group: "Router",

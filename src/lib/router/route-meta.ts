@@ -51,6 +51,12 @@ export const APP_ROUTES = [
     description: "Live slim catalog browser",
     group: "product",
   },
+  {
+    to: "/skills",
+    label: "Skill packs",
+    description: "Twelve LVL skills as full products",
+    group: "product",
+  },
 ] as const;
 
 export type AppRouteTo = (typeof APP_ROUTES)[number]["to"];

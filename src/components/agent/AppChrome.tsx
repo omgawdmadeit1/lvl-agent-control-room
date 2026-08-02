@@ -13,6 +13,7 @@ const NAV = [
   { href: "/lab/router", label: "Router lab", route: true },
   { href: "/lab/loaders", label: "Loaders", route: true },
   { href: "/marketplace", label: "Marketplace", route: true },
+  { href: "/skills", label: "Skill packs", route: true },
   { href: "https://lvlltd.com", label: "lvlltd.com", external: true },
   { href: "#drawer-code", label: "Drawer code" },
   { href: "#keyboard-shortcuts", label: "Shortcuts" },
@@ -67,7 +68,7 @@ export function QuickNav() {
             <li key={item.href}>
               {"route" in item && item.route ? (
                 <Link
-                  to={item.href as "/ops/board" | "/lab/router" | "/lab/loaders" | "/marketplace"}
+                  to={item.href as "/ops/board" | "/lab/router" | "/lab/loaders" | "/marketplace" | "/skills"}
                   className="inline-flex h-11 min-target items-center rounded-[var(--radius-md)] px-3 text-xs font-medium text-muted transition hover:bg-elevated hover:text-fg"
                 >
                   {item.label}
