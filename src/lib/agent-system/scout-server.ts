@@ -32,6 +32,7 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
       path.startsWith("/api/") ||
       path.startsWith("/listings/") ||
       path.startsWith("/status") ||
+      path.startsWith("/skills/") ||
       path === "/robots.txt" ||
       path === "/sitemap.xml";
     if (!allowed) {

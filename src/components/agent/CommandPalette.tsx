@@ -81,6 +81,18 @@ export function CommandPalette({
         group: "Router",
         run: () => { window.location.assign("/ops/health"); },
       },
+      {
+        id: "route-marketplace",
+        label: "Route: /marketplace",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace"); },
+      },
+      {
+        id: "route-catalog",
+        label: "Route: /marketplace/catalog",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/catalog"); },
+      },
       { id: "approve", label: "Approve ship", hint: "A", group: "Run", run: () => approve() },
       {
         id: "scout",

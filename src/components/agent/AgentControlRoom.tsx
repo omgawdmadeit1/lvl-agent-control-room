@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   Activity,
@@ -334,6 +335,40 @@ export function AgentControlRoom() {
         tabIndex={-1}
         className="mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-4 overflow-x-clip px-4 py-4 outline-none lg:grid-cols-12"
       >
+        <section className="col-span-full rounded-[var(--radius-xl)] border border-accent/30 bg-accent/5 p-4 sm:p-5">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-accent">Product thesis</p>
+              <h2 className="mt-1 text-sm font-semibold">Build the ideas behind lvlltd.com</h2>
+              <p className="mt-1 max-w-xl text-xs text-muted leading-relaxed">
+                Agent-native discovery, x402 USDC unlocks, sealed packs, and trust rails — explore the live
+                catalog and payment challenges without leaving ops.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                to="/marketplace"
+                className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+              >
+                Marketplace
+              </Link>
+              <Link
+                to="/marketplace/x402"
+                search={{ skill: "agent-orchestration" }}
+                className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-xs font-medium"
+              >
+                x402 live
+              </Link>
+              <Link
+                to="/marketplace/catalog"
+                className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+              >
+                Catalog
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Stats */}
         <section className="col-span-full grid w-full min-w-0 grid-cols-2 gap-3 sm:grid-cols-4">
           {[

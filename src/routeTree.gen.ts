@@ -10,17 +10,28 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
 import { Route as OpsRouteImport } from './routes/ops'
 import { Route as LabLoadersRouteImport } from './routes/lab/loaders'
 import { Route as LabRouterRouteImport } from './routes/lab/router'
+import { Route as MarketplaceIndexRouteImport } from './routes/marketplace/index'
+import { Route as MarketplaceCatalogRouteImport } from './routes/marketplace/catalog'
+import { Route as MarketplaceRailsRouteImport } from './routes/marketplace/rails'
+import { Route as MarketplaceX402RouteImport } from './routes/marketplace/x402'
 import { Route as OpsIndexRouteImport } from './routes/ops/index'
 import { Route as OpsBoardRouteImport } from './routes/ops/board'
 import { Route as OpsHealthRouteImport } from './routes/ops/health'
 import { Route as OpsScoutRouteImport } from './routes/ops/scout'
+import { Route as MarketplaceSkillSkillIdRouteImport } from './routes/marketplace/skill.$skillId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OpsRoute = OpsRouteImport.update({
@@ -37,6 +48,26 @@ const LabRouterRoute = LabRouterRouteImport.update({
   id: '/lab/router',
   path: '/lab/router',
   getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceIndexRoute = MarketplaceIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceCatalogRoute = MarketplaceCatalogRouteImport.update({
+  id: '/catalog',
+  path: '/catalog',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceRailsRoute = MarketplaceRailsRouteImport.update({
+  id: '/rails',
+  path: '/rails',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceX402Route = MarketplaceX402RouteImport.update({
+  id: '/x402',
+  path: '/x402',
+  getParentRoute: () => MarketplaceRoute,
 } as any)
 const OpsIndexRoute = OpsIndexRouteImport.update({
   id: '/',
@@ -58,71 +89,111 @@ const OpsScoutRoute = OpsScoutRouteImport.update({
   path: '/scout',
   getParentRoute: () => OpsRoute,
 } as any)
+const MarketplaceSkillSkillIdRoute = MarketplaceSkillSkillIdRouteImport.update({
+  id: '/skill/$skillId',
+  path: '/skill/$skillId',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/marketplace': typeof MarketplaceRouteWithChildren
   '/ops': typeof OpsRouteWithChildren
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
+  '/marketplace/catalog': typeof MarketplaceCatalogRoute
+  '/marketplace/rails': typeof MarketplaceRailsRoute
+  '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
   '/ops/scout': typeof OpsScoutRoute
+  '/marketplace/': typeof MarketplaceIndexRoute
   '/ops/': typeof OpsIndexRoute
+  '/marketplace/skill/$skillId': typeof MarketplaceSkillSkillIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
+  '/marketplace/catalog': typeof MarketplaceCatalogRoute
+  '/marketplace/rails': typeof MarketplaceRailsRoute
+  '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
   '/ops/scout': typeof OpsScoutRoute
+  '/marketplace': typeof MarketplaceIndexRoute
   '/ops': typeof OpsIndexRoute
+  '/marketplace/skill/$skillId': typeof MarketplaceSkillSkillIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/marketplace': typeof MarketplaceRouteWithChildren
   '/ops': typeof OpsRouteWithChildren
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
+  '/marketplace/catalog': typeof MarketplaceCatalogRoute
+  '/marketplace/rails': typeof MarketplaceRailsRoute
+  '/marketplace/x402': typeof MarketplaceX402Route
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
   '/ops/scout': typeof OpsScoutRoute
+  '/marketplace/': typeof MarketplaceIndexRoute
   '/ops/': typeof OpsIndexRoute
+  '/marketplace/skill/$skillId': typeof MarketplaceSkillSkillIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/marketplace'
     | '/ops'
     | '/lab/loaders'
     | '/lab/router'
+    | '/marketplace/catalog'
+    | '/marketplace/rails'
+    | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
     | '/ops/scout'
+    | '/marketplace/'
     | '/ops/'
+    | '/marketplace/skill/$skillId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/lab/loaders'
     | '/lab/router'
+    | '/marketplace/catalog'
+    | '/marketplace/rails'
+    | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
     | '/ops/scout'
+    | '/marketplace'
     | '/ops'
+    | '/marketplace/skill/$skillId'
   id:
     | '__root__'
     | '/'
+    | '/marketplace'
     | '/ops'
     | '/lab/loaders'
     | '/lab/router'
+    | '/marketplace/catalog'
+    | '/marketplace/rails'
+    | '/marketplace/x402'
     | '/ops/board'
     | '/ops/health'
     | '/ops/scout'
+    | '/marketplace/'
     | '/ops/'
+    | '/marketplace/skill/$skillId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MarketplaceRoute: typeof MarketplaceRouteWithChildren
   OpsRoute: typeof OpsRouteWithChildren
   LabLoadersRoute: typeof LabLoadersRoute
   LabRouterRoute: typeof LabRouterRoute
@@ -135,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ops': {
@@ -157,6 +235,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/lab/router'
       preLoaderRoute: typeof LabRouterRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/marketplace/': {
+      id: '/marketplace/'
+      path: '/'
+      fullPath: '/marketplace/'
+      preLoaderRoute: typeof MarketplaceIndexRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/catalog': {
+      id: '/marketplace/catalog'
+      path: '/catalog'
+      fullPath: '/marketplace/catalog'
+      preLoaderRoute: typeof MarketplaceCatalogRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/rails': {
+      id: '/marketplace/rails'
+      path: '/rails'
+      fullPath: '/marketplace/rails'
+      preLoaderRoute: typeof MarketplaceRailsRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/x402': {
+      id: '/marketplace/x402'
+      path: '/x402'
+      fullPath: '/marketplace/x402'
+      preLoaderRoute: typeof MarketplaceX402RouteImport
+      parentRoute: typeof MarketplaceRoute
     }
     '/ops/': {
       id: '/ops/'
@@ -186,8 +292,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpsScoutRouteImport
       parentRoute: typeof OpsRoute
     }
+    '/marketplace/skill/$skillId': {
+      id: '/marketplace/skill/$skillId'
+      path: '/skill/$skillId'
+      fullPath: '/marketplace/skill/$skillId'
+      preLoaderRoute: typeof MarketplaceSkillSkillIdRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
   }
 }
+
+interface MarketplaceRouteChildren {
+  MarketplaceCatalogRoute: typeof MarketplaceCatalogRoute
+  MarketplaceRailsRoute: typeof MarketplaceRailsRoute
+  MarketplaceX402Route: typeof MarketplaceX402Route
+  MarketplaceIndexRoute: typeof MarketplaceIndexRoute
+  MarketplaceSkillSkillIdRoute: typeof MarketplaceSkillSkillIdRoute
+}
+
+const MarketplaceRouteChildren: MarketplaceRouteChildren = {
+  MarketplaceCatalogRoute: MarketplaceCatalogRoute,
+  MarketplaceRailsRoute: MarketplaceRailsRoute,
+  MarketplaceX402Route: MarketplaceX402Route,
+  MarketplaceIndexRoute: MarketplaceIndexRoute,
+  MarketplaceSkillSkillIdRoute: MarketplaceSkillSkillIdRoute,
+}
+
+const MarketplaceRouteWithChildren = MarketplaceRoute._addFileChildren(
+  MarketplaceRouteChildren,
+)
 
 interface OpsRouteChildren {
   OpsBoardRoute: typeof OpsBoardRoute
@@ -207,6 +340,7 @@ const OpsRouteWithChildren = OpsRoute._addFileChildren(OpsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MarketplaceRoute: MarketplaceRouteWithChildren,
   OpsRoute: OpsRouteWithChildren,
   LabLoadersRoute: LabLoadersRoute,
   LabRouterRoute: LabRouterRoute,

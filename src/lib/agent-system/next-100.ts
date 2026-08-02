@@ -122,6 +122,12 @@ export const NEXT_100: BuildStep[] = [
   { id: 98, title: "SLA dashboard for rails", area: "data", status: "later" },
   { id: 99, title: "Production build SSR smoke gate", area: "ship", status: "later" },
   { id: 100, title: "Ship Control Room v1 release notes", area: "ship", status: "later" },
+
+  { id: 201, title: "Marketplace overview route (live catalog thesis)", area: "product", status: "done" },
+  { id: 202, title: "Catalog browser with agent-style filters", area: "product", status: "done" },
+  { id: 203, title: "Live x402 challenge inspector", area: "product", status: "done" },
+  { id: 204, title: "Six-rail agent commerce diagram", area: "product", status: "done" },
+  { id: 205, title: "Skill detail + sealed-pack unlock path", area: "product", status: "done" },
 ];
 
 export function summarizeNext100(steps: BuildStep[] = NEXT_100) {

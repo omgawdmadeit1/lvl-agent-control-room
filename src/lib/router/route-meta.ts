@@ -39,6 +39,18 @@ export const APP_ROUTES = [
     description: "loader, loaderDeps, pendingComponent, errorComponent, staleTime",
     group: "lab",
   },
+  {
+    to: "/marketplace",
+    label: "Marketplace",
+    description: "lvlltd.com product rails, live catalog, x402 challenges",
+    group: "product",
+  },
+  {
+    to: "/marketplace/catalog",
+    label: "Catalog",
+    description: "Live slim catalog browser",
+    group: "product",
+  },
 ] as const;
 
 export type AppRouteTo = (typeof APP_ROUTES)[number]["to"];
