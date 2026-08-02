@@ -22,10 +22,21 @@ export function parseProxiedJson(res: ProxiedResponse): unknown {
 /**
  * Server-side fetch so browser console is not spammed with client 402/404.
  */
+export type ProxyLvlInput = {
+  path: string;
+  method?: string;
+  accept?: string;
+  /** Optional JSON body for POST (e.g. unlock) */
+  body?: string;
+  /** Extra headers (X-PAYMENT, Content-Type, …) */
+  headers?: Record<string, string>;
+};
+
 export const proxyLvlFetch = createServerFn({ method: "POST" })
-  .validator((input: { path: string; method?: string; accept?: string }) => input)
+  .validator((input: ProxyLvlInput) => input)
   .handler(async ({ data }): Promise<ProxiedResponse> => {
     const path = data.path.startsWith("/") ? data.path : `/${data.path}`;
+    const method = (data.method || "GET").toUpperCase();
     const allowed =
       path === "/" ||
       path.startsWith("/catalog.json") ||
@@ -46,12 +57,27 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
     if (!allowed) {
       return { ok: false, status: 400, ms: 0, error: "path not allowlisted" };
     }
+    // Only allow mutating methods on pay/unlock-related paths
+    if (method !== "GET" && method !== "HEAD") {
+      const mutOk =
+        path.startsWith("/api/pay") ||
+        path.startsWith("/api/cart") ||
+        path.startsWith("/api/proof");
+      if (!mutOk) {
+        return { ok: false, status: 400, ms: 0, error: "POST only allowed for pay/cart/proof" };
+      }
+    }
     const url = `https://lvlltd.com${path}`;
     const t0 = Date.now();
     try {
       const r = await fetch(url, {
-        method: data.method || "GET",
-        headers: { Accept: data.accept || "*/*" },
+        method,
+        headers: {
+          Accept: data.accept || "application/json",
+          ...(data.body ? { "Content-Type": "application/json" } : {}),
+          ...(data.headers || {}),
+        },
+        body: data.body && method !== "GET" && method !== "HEAD" ? data.body : undefined,
         redirect: "manual",
       });
       const ct = r.headers.get("content-type") || "";

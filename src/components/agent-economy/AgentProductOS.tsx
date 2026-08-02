@@ -121,9 +121,22 @@ export function AgentProductOS({ data }: { data: ProductSnapshot }) {
             Economy cockpit
           </Link>
           <Link
-            to="/marketplace/x402"
+            to="/marketplace/checkout"
             search={{ skill: data.featured.start_here?.id || "agent-x402-first-buy" }}
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+          >
+            Checkout wizard
+          </Link>
+          <Link
+            to="/marketplace/demand"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-xs font-medium"
+          >
+            Demand board
+          </Link>
+          <Link
+            to="/marketplace/x402"
+            search={{ skill: data.featured.start_here?.id || "agent-x402-first-buy" }}
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
           >
             Start $0.05 canary
           </Link>

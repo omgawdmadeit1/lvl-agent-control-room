@@ -21,6 +21,8 @@ const LINKS = [
   { to: "/marketplace/rails" as const, label: "Rails" },
   { to: "/marketplace/agent-economy" as const, label: "Agent economy" },
   { to: "/marketplace/product" as const, label: "Product OS" },
+  { to: "/marketplace/checkout" as const, label: "Checkout" },
+  { to: "/marketplace/demand" as const, label: "Demand" },
 ];
 
 function MarketplaceLayout() {

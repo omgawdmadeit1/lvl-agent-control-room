@@ -59,6 +59,13 @@ function MarketplaceHome() {
             Agent Product OS
           </Link>
           <Link
+            to="/marketplace/checkout"
+            search={{ skill: "agent-x402-first-buy" }}
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-accent/40 bg-accent/10 px-4 text-sm font-semibold text-accent"
+          >
+            Checkout wizard
+          </Link>
+          <Link
             to="/marketplace/agent-economy"
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-accent/40 bg-accent/10 px-4 text-sm font-semibold text-accent"
           >
