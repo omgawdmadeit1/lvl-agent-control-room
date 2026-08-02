@@ -64,9 +64,17 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
       const mutOk =
         path.startsWith("/api/pay") ||
         path.startsWith("/api/cart") ||
-        path.startsWith("/api/proof");
+        path.startsWith("/api/proof") ||
+        path.startsWith("/api/mcp") ||
+        path.startsWith("/api/mandates") ||
+        path.startsWith("/api/intent");
       if (!mutOk) {
-        return { ok: false, status: 400, ms: 0, error: "POST only allowed for pay/cart/proof" };
+        return {
+          ok: false,
+          status: 400,
+          ms: 0,
+          error: "POST only allowed for pay/cart/proof/mcp/mandates",
+        };
       }
     }
     const url = `https://lvlltd.com${path}`;

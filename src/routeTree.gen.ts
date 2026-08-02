@@ -18,6 +18,7 @@ import { Route as LabLoadersRouteImport } from './routes/lab/loaders'
 import { Route as LabRouterRouteImport } from './routes/lab/router'
 import { Route as LabSettlementRouteImport } from './routes/lab/settlement'
 import { Route as MarketplaceIndexRouteImport } from './routes/marketplace/index'
+import { Route as MarketplaceAccessRouteImport } from './routes/marketplace/access'
 import { Route as MarketplaceAgentEconomyRouteImport } from './routes/marketplace/agent-economy'
 import { Route as MarketplaceAgentsRouteImport } from './routes/marketplace/agents'
 import { Route as MarketplaceCatalogRouteImport } from './routes/marketplace/catalog'
@@ -27,6 +28,8 @@ import { Route as MarketplaceIntentRouteImport } from './routes/marketplace/inte
 import { Route as MarketplaceKitRouteImport } from './routes/marketplace/kit'
 import { Route as MarketplaceLadderRouteImport } from './routes/marketplace/ladder'
 import { Route as MarketplaceLiveRouteImport } from './routes/marketplace/live'
+import { Route as MarketplaceMandatesRouteImport } from './routes/marketplace/mandates'
+import { Route as MarketplaceMcpRouteImport } from './routes/marketplace/mcp'
 import { Route as MarketplaceProductRouteImport } from './routes/marketplace/product'
 import { Route as MarketplaceProtocolsRouteImport } from './routes/marketplace/protocols'
 import { Route as MarketplaceRailsRouteImport } from './routes/marketplace/rails'
@@ -90,6 +93,11 @@ const MarketplaceIndexRoute = MarketplaceIndexRouteImport.update({
   path: '/',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceAccessRoute = MarketplaceAccessRouteImport.update({
+  id: '/access',
+  path: '/access',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceAgentEconomyRoute = MarketplaceAgentEconomyRouteImport.update({
   id: '/agent-economy',
   path: '/agent-economy',
@@ -133,6 +141,16 @@ const MarketplaceLadderRoute = MarketplaceLadderRouteImport.update({
 const MarketplaceLiveRoute = MarketplaceLiveRouteImport.update({
   id: '/live',
   path: '/live',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceMandatesRoute = MarketplaceMandatesRouteImport.update({
+  id: '/mandates',
+  path: '/mandates',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceMcpRoute = MarketplaceMcpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
   getParentRoute: () => MarketplaceRoute,
 } as any)
 const MarketplaceProductRoute = MarketplaceProductRouteImport.update({
@@ -230,6 +248,7 @@ export interface FileRoutesByFullPath {
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
+  '/marketplace/access': typeof MarketplaceAccessRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/agents': typeof MarketplaceAgentsRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
@@ -239,6 +258,8 @@ export interface FileRoutesByFullPath {
   '/marketplace/kit': typeof MarketplaceKitRoute
   '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/live': typeof MarketplaceLiveRoute
+  '/marketplace/mandates': typeof MarketplaceMandatesRoute
+  '/marketplace/mcp': typeof MarketplaceMcpRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
@@ -264,6 +285,7 @@ export interface FileRoutesByTo {
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
+  '/marketplace/access': typeof MarketplaceAccessRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/agents': typeof MarketplaceAgentsRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
@@ -273,6 +295,8 @@ export interface FileRoutesByTo {
   '/marketplace/kit': typeof MarketplaceKitRoute
   '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/live': typeof MarketplaceLiveRoute
+  '/marketplace/mandates': typeof MarketplaceMandatesRoute
+  '/marketplace/mcp': typeof MarketplaceMcpRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
@@ -302,6 +326,7 @@ export interface FileRoutesById {
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/lab/settlement': typeof LabSettlementRoute
+  '/marketplace/access': typeof MarketplaceAccessRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/agents': typeof MarketplaceAgentsRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
@@ -311,6 +336,8 @@ export interface FileRoutesById {
   '/marketplace/kit': typeof MarketplaceKitRoute
   '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/live': typeof MarketplaceLiveRoute
+  '/marketplace/mandates': typeof MarketplaceMandatesRoute
+  '/marketplace/mcp': typeof MarketplaceMcpRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
@@ -341,6 +368,7 @@ export interface FileRouteTypes {
     | '/lab/loaders'
     | '/lab/router'
     | '/lab/settlement'
+    | '/marketplace/access'
     | '/marketplace/agent-economy'
     | '/marketplace/agents'
     | '/marketplace/catalog'
@@ -350,6 +378,8 @@ export interface FileRouteTypes {
     | '/marketplace/kit'
     | '/marketplace/ladder'
     | '/marketplace/live'
+    | '/marketplace/mandates'
+    | '/marketplace/mcp'
     | '/marketplace/product'
     | '/marketplace/protocols'
     | '/marketplace/rails'
@@ -375,6 +405,7 @@ export interface FileRouteTypes {
     | '/lab/loaders'
     | '/lab/router'
     | '/lab/settlement'
+    | '/marketplace/access'
     | '/marketplace/agent-economy'
     | '/marketplace/agents'
     | '/marketplace/catalog'
@@ -384,6 +415,8 @@ export interface FileRouteTypes {
     | '/marketplace/kit'
     | '/marketplace/ladder'
     | '/marketplace/live'
+    | '/marketplace/mandates'
+    | '/marketplace/mcp'
     | '/marketplace/product'
     | '/marketplace/protocols'
     | '/marketplace/rails'
@@ -412,6 +445,7 @@ export interface FileRouteTypes {
     | '/lab/loaders'
     | '/lab/router'
     | '/lab/settlement'
+    | '/marketplace/access'
     | '/marketplace/agent-economy'
     | '/marketplace/agents'
     | '/marketplace/catalog'
@@ -421,6 +455,8 @@ export interface FileRouteTypes {
     | '/marketplace/kit'
     | '/marketplace/ladder'
     | '/marketplace/live'
+    | '/marketplace/mandates'
+    | '/marketplace/mcp'
     | '/marketplace/product'
     | '/marketplace/protocols'
     | '/marketplace/rails'
@@ -517,6 +553,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceIndexRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/access': {
+      id: '/marketplace/access'
+      path: '/access'
+      fullPath: '/marketplace/access'
+      preLoaderRoute: typeof MarketplaceAccessRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/agent-economy': {
       id: '/marketplace/agent-economy'
       path: '/agent-economy'
@@ -578,6 +621,20 @@ declare module '@tanstack/react-router' {
       path: '/live'
       fullPath: '/marketplace/live'
       preLoaderRoute: typeof MarketplaceLiveRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/mandates': {
+      id: '/marketplace/mandates'
+      path: '/mandates'
+      fullPath: '/marketplace/mandates'
+      preLoaderRoute: typeof MarketplaceMandatesRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/mcp': {
+      id: '/marketplace/mcp'
+      path: '/mcp'
+      fullPath: '/marketplace/mcp'
+      preLoaderRoute: typeof MarketplaceMcpRouteImport
       parentRoute: typeof MarketplaceRoute
     }
     '/marketplace/product': {
@@ -703,6 +760,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface MarketplaceRouteChildren {
+  MarketplaceAccessRoute: typeof MarketplaceAccessRoute
   MarketplaceAgentEconomyRoute: typeof MarketplaceAgentEconomyRoute
   MarketplaceAgentsRoute: typeof MarketplaceAgentsRoute
   MarketplaceCatalogRoute: typeof MarketplaceCatalogRoute
@@ -712,6 +770,8 @@ interface MarketplaceRouteChildren {
   MarketplaceKitRoute: typeof MarketplaceKitRoute
   MarketplaceLadderRoute: typeof MarketplaceLadderRoute
   MarketplaceLiveRoute: typeof MarketplaceLiveRoute
+  MarketplaceMandatesRoute: typeof MarketplaceMandatesRoute
+  MarketplaceMcpRoute: typeof MarketplaceMcpRoute
   MarketplaceProductRoute: typeof MarketplaceProductRoute
   MarketplaceProtocolsRoute: typeof MarketplaceProtocolsRoute
   MarketplaceRailsRoute: typeof MarketplaceRailsRoute
@@ -727,6 +787,7 @@ interface MarketplaceRouteChildren {
 }
 
 const MarketplaceRouteChildren: MarketplaceRouteChildren = {
+  MarketplaceAccessRoute: MarketplaceAccessRoute,
   MarketplaceAgentEconomyRoute: MarketplaceAgentEconomyRoute,
   MarketplaceAgentsRoute: MarketplaceAgentsRoute,
   MarketplaceCatalogRoute: MarketplaceCatalogRoute,
@@ -736,6 +797,8 @@ const MarketplaceRouteChildren: MarketplaceRouteChildren = {
   MarketplaceKitRoute: MarketplaceKitRoute,
   MarketplaceLadderRoute: MarketplaceLadderRoute,
   MarketplaceLiveRoute: MarketplaceLiveRoute,
+  MarketplaceMandatesRoute: MarketplaceMandatesRoute,
+  MarketplaceMcpRoute: MarketplaceMcpRoute,
   MarketplaceProductRoute: MarketplaceProductRoute,
   MarketplaceProtocolsRoute: MarketplaceProtocolsRoute,
   MarketplaceRailsRoute: MarketplaceRailsRoute,

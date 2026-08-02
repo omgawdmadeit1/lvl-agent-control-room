@@ -218,6 +218,83 @@ export function LiveOpsCenter({ data }: { data: LiveOpsSnapshot }) {
         </Panel>
       </div>
 
+
+      <Panel title="Conversion goals & alerts">
+        {(() => {
+          const payEntry = today?.catalog_fetch?.pay_entry ?? 0;
+          const challenges = today?.challenge_served?.total ?? 0;
+          const agentCh = agentToday?.challenge_served?.total ?? 0;
+          const rate = payEntry > 0 ? Math.round((challenges / payEntry) * 100) : 0;
+          const alerts: { level: string; msg: string }[] = [];
+          if (!ready?.ready) {
+            alerts.push({
+              level: "warn",
+              msg: "Aggregate /api/ready is false — investigate challenge_shape before SLA claims.",
+            });
+          }
+          if (!payments.live) {
+            alerts.push({ level: "danger", msg: "Payments not live." });
+          }
+          if (agentCh === 0 && payEntry > 10) {
+            alerts.push({
+              level: "warn",
+              msg: "Human/catalog traffic without agent 402s — push SDK + agent card distribution.",
+            });
+          }
+          if ((payments.unlock_count ?? 0) < 2 && challenges > 20) {
+            alerts.push({
+              level: "info",
+              msg: "Many challenges, few confirmed unlocks — fix wallet UX / canary onboarding.",
+            });
+          }
+          if (rate < 50 && payEntry > 5) {
+            alerts.push({
+              level: "info",
+              msg: `Challenge conversion ${rate}% of pay_entry — target ≥70% for healthy agent funnel.`,
+            });
+          }
+          if (alerts.length === 0) {
+            alerts.push({ level: "ok", msg: "No critical funnel alerts on current public window." });
+          }
+          return (
+            <div className="space-y-3">
+              <dl className="grid grid-cols-3 gap-2 text-xs">
+                <div>
+                  <dt className="text-subtle">Goal: canary unlocks</dt>
+                  <dd className="font-mono text-lg">≥1 / week</dd>
+                </div>
+                <div>
+                  <dt className="text-subtle">402 / pay_entry</dt>
+                  <dd className="font-mono text-lg">{rate}%</dd>
+                </div>
+                <div>
+                  <dt className="text-subtle">Agent 402s today</dt>
+                  <dd className="font-mono text-lg">{agentCh}</dd>
+                </div>
+              </dl>
+              <ul className="space-y-2">
+                {alerts.map((a, i) => (
+                  <li
+                    key={i}
+                    className={
+                      a.level === "danger"
+                        ? "rounded border border-danger/40 bg-danger/10 p-2 text-xs"
+                        : a.level === "warn"
+                          ? "rounded border border-warn/40 bg-warn/10 p-2 text-xs"
+                          : a.level === "ok"
+                            ? "rounded border border-ok/40 bg-ok/10 p-2 text-xs"
+                            : "rounded border border-border bg-elevated p-2 text-xs"
+                    }
+                  >
+                    {a.msg}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })()}
+      </Panel>
+
       <div className="grid gap-4 lg:grid-cols-2">
         <Panel title="Inventory">
           <ul className="space-y-1 text-xs">

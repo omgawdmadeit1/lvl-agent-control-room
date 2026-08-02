@@ -120,6 +120,21 @@ const TILES: {
     label: "Trust lab",
     blurb: "Scores · security · eval",
   },
+  {
+    to: "/marketplace/mcp",
+    label: "MCP console",
+    blurb: "Live tools/call against LVL",
+  },
+  {
+    to: "/marketplace/access",
+    label: "Access",
+    blurb: "Meter · sub · sealed unlock",
+  },
+  {
+    to: "/marketplace/mandates",
+    label: "Mandates",
+    blurb: "AP2 draft + sign message",
+  },
 ];
 
 function MarketplaceHub() {

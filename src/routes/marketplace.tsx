@@ -35,6 +35,9 @@ const LINKS = [
   { to: "/marketplace/protocols" as const, label: "Protocols" },
   { to: "/marketplace/intent" as const, label: "Intent" },
   { to: "/marketplace/trust" as const, label: "Trust" },
+  { to: "/marketplace/mcp" as const, label: "MCP" },
+  { to: "/marketplace/access" as const, label: "Access" },
+  { to: "/marketplace/mandates" as const, label: "Mandates" },
 ];
 
 function MarketplaceLayout() {

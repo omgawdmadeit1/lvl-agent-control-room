@@ -184,6 +184,24 @@ export function CommandPalette({
         run: () => { window.location.assign("/marketplace/trust"); },
       },
       {
+        id: "route-mcp",
+        label: "Route: /marketplace/mcp",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/mcp"); },
+      },
+      {
+        id: "route-access",
+        label: "Route: /marketplace/access",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/access"); },
+      },
+      {
+        id: "route-mandates",
+        label: "Route: /marketplace/mandates",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/mandates"); },
+      },
+      {
         id: "route-skills",
         label: "Route: /skills (Skill Pack Studio)",
         group: "Router",

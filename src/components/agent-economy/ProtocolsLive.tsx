@@ -24,8 +24,14 @@ export function ProtocolsLive({ data }: { data: ProtocolsLiveSnapshot }) {
         <p className="mt-2 font-mono text-[11px] text-subtle">{data.durationMs}ms snapshot</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
-            to="/marketplace/intent"
+            to="/marketplace/mcp"
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+          >
+            MCP console
+          </Link>
+          <Link
+            to="/marketplace/intent"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-xs font-semibold"
           >
             Intent search
           </Link>
