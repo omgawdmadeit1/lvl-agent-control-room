@@ -213,13 +213,14 @@ export function buildIntegrationKit(opts: {
   base?: string;
   defaultSkill?: string;
   budgetUsd?: number;
+  generatedAt?: string;
 }) {
   const base = opts.base || "https://lvlltd.com";
   const skill = opts.defaultSkill || "agent-x402-first-buy";
   const budget = opts.budgetUsd ?? 5;
   return {
     schema: "lvl-agent-integration-kit-v1",
-    generatedAt: new Date().toISOString(),
+    generatedAt: opts.generatedAt || "2026-08-01T00:00:00.000Z",
     site: base,
     product: "LVL LTD x402 Agent Skill Market",
     sdk: `${base}/sdk/agent-shop.mjs`,

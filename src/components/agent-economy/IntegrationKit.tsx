@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { buildIntegrationKit } from "@/lib/agent-economy/live-ops";
 import { cn } from "@/components/ui/cn";
@@ -9,9 +9,18 @@ const inputCls =
 export function IntegrationKitPage() {
   const [skill, setSkill] = useState("agent-x402-first-buy");
   const [budget, setBudget] = useState(5);
+  const [generatedAt, setGeneratedAt] = useState("2026-08-01T00:00:00.000Z");
+  useEffect(() => {
+    setGeneratedAt(new Date().toISOString());
+  }, []);
   const kit = useMemo(
-    () => buildIntegrationKit({ defaultSkill: skill, budgetUsd: budget }),
-    [skill, budget],
+    () =>
+      buildIntegrationKit({
+        defaultSkill: skill,
+        budgetUsd: budget,
+        generatedAt,
+      }),
+    [skill, budget, generatedAt],
   );
   const json = JSON.stringify(kit, null, 2);
 
