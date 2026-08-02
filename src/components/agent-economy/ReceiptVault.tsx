@@ -53,6 +53,12 @@ export function ReceiptVault() {
           >
             Pay & unlock
           </Link>
+          <Link
+            to="/marketplace/credentials"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+          >
+            Buyer credentials
+          </Link>
           <button
             type="button"
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"

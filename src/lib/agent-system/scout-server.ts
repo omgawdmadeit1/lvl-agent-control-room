@@ -67,6 +67,7 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
         path.startsWith("/api/proof") ||
         path.startsWith("/api/mcp") ||
         path.startsWith("/api/mandates") ||
+        path.startsWith("/api/orchestrate") ||
         path.startsWith("/api/intent");
       if (!mutOk) {
         return {

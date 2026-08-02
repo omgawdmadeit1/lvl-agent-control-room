@@ -47,6 +47,18 @@ export function ProtocolsLive({ data }: { data: ProtocolsLiveSnapshot }) {
           >
             Interop lab
           </Link>
+          <Link
+            to="/marketplace/credentials"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+          >
+            Buyer credentials
+          </Link>
+          <Link
+            to="/marketplace/orchestrate"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+          >
+            Orchestrate
+          </Link>
         </div>
       </section>
 

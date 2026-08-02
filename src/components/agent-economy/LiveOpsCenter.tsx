@@ -80,8 +80,20 @@ export function LiveOpsCenter({ data }: { data: LiveOpsSnapshot }) {
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
-            to="/marketplace/simulate"
+            to="/marketplace/auditor"
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+          >
+            Auditor
+          </Link>
+          <Link
+            to="/marketplace/orchestrate"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-xs font-semibold"
+          >
+            Orchestrate
+          </Link>
+          <Link
+            to="/marketplace/simulate"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-semibold"
           >
             Buyer agent sim
           </Link>

@@ -10,6 +10,7 @@ import {
 } from "@/lib/agent-economy/product-engine";
 import { X_AGENT_ECONOMY_INSIGHTS } from "@/lib/agent-economy/x-signals";
 import { cn } from "@/components/ui/cn";
+import { AuditorBadge } from "@/components/agent-economy/AuditorBadge";
 
 function Panel({
   title,

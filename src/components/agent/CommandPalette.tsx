@@ -118,6 +118,30 @@ export function CommandPalette({
         run: () => { window.location.assign("/marketplace/receipts"); },
       },
       {
+        id: "route-auditor",
+        label: "Route: /marketplace/auditor",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/auditor"); },
+      },
+      {
+        id: "route-orchestrate",
+        label: "Route: /marketplace/orchestrate",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/orchestrate"); },
+      },
+      {
+        id: "route-credentials",
+        label: "Route: /marketplace/credentials",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/credentials"); },
+      },
+      {
+        id: "route-manifest",
+        label: "Route: /marketplace/manifest",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/manifest"); },
+      },
+      {
         id: "route-demand",
         label: "Route: /marketplace/demand",
         group: "Router",

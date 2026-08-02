@@ -21,15 +21,19 @@ import { Route as MarketplaceIndexRouteImport } from './routes/marketplace/index
 import { Route as MarketplaceAccessRouteImport } from './routes/marketplace/access'
 import { Route as MarketplaceAgentEconomyRouteImport } from './routes/marketplace/agent-economy'
 import { Route as MarketplaceAgentsRouteImport } from './routes/marketplace/agents'
+import { Route as MarketplaceAuditorRouteImport } from './routes/marketplace/auditor'
 import { Route as MarketplaceCatalogRouteImport } from './routes/marketplace/catalog'
 import { Route as MarketplaceCheckoutRouteImport } from './routes/marketplace/checkout'
+import { Route as MarketplaceCredentialsRouteImport } from './routes/marketplace/credentials'
 import { Route as MarketplaceDemandRouteImport } from './routes/marketplace/demand'
 import { Route as MarketplaceIntentRouteImport } from './routes/marketplace/intent'
 import { Route as MarketplaceKitRouteImport } from './routes/marketplace/kit'
 import { Route as MarketplaceLadderRouteImport } from './routes/marketplace/ladder'
 import { Route as MarketplaceLiveRouteImport } from './routes/marketplace/live'
 import { Route as MarketplaceMandatesRouteImport } from './routes/marketplace/mandates'
+import { Route as MarketplaceManifestRouteImport } from './routes/marketplace/manifest'
 import { Route as MarketplaceMcpRouteImport } from './routes/marketplace/mcp'
+import { Route as MarketplaceOrchestrateRouteImport } from './routes/marketplace/orchestrate'
 import { Route as MarketplacePayRouteImport } from './routes/marketplace/pay'
 import { Route as MarketplaceProductRouteImport } from './routes/marketplace/product'
 import { Route as MarketplaceProtocolsRouteImport } from './routes/marketplace/protocols'
@@ -111,6 +115,11 @@ const MarketplaceAgentsRoute = MarketplaceAgentsRouteImport.update({
   path: '/agents',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceAuditorRoute = MarketplaceAuditorRouteImport.update({
+  id: '/auditor',
+  path: '/auditor',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceCatalogRoute = MarketplaceCatalogRouteImport.update({
   id: '/catalog',
   path: '/catalog',
@@ -119,6 +128,11 @@ const MarketplaceCatalogRoute = MarketplaceCatalogRouteImport.update({
 const MarketplaceCheckoutRoute = MarketplaceCheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceCredentialsRoute = MarketplaceCredentialsRouteImport.update({
+  id: '/credentials',
+  path: '/credentials',
   getParentRoute: () => MarketplaceRoute,
 } as any)
 const MarketplaceDemandRoute = MarketplaceDemandRouteImport.update({
@@ -151,9 +165,19 @@ const MarketplaceMandatesRoute = MarketplaceMandatesRouteImport.update({
   path: '/mandates',
   getParentRoute: () => MarketplaceRoute,
 } as any)
+const MarketplaceManifestRoute = MarketplaceManifestRouteImport.update({
+  id: '/manifest',
+  path: '/manifest',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
 const MarketplaceMcpRoute = MarketplaceMcpRouteImport.update({
   id: '/mcp',
   path: '/mcp',
+  getParentRoute: () => MarketplaceRoute,
+} as any)
+const MarketplaceOrchestrateRoute = MarketplaceOrchestrateRouteImport.update({
+  id: '/orchestrate',
+  path: '/orchestrate',
   getParentRoute: () => MarketplaceRoute,
 } as any)
 const MarketplacePayRoute = MarketplacePayRouteImport.update({
@@ -269,15 +293,19 @@ export interface FileRoutesByFullPath {
   '/marketplace/access': typeof MarketplaceAccessRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/agents': typeof MarketplaceAgentsRoute
+  '/marketplace/auditor': typeof MarketplaceAuditorRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
+  '/marketplace/credentials': typeof MarketplaceCredentialsRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
   '/marketplace/intent': typeof MarketplaceIntentRoute
   '/marketplace/kit': typeof MarketplaceKitRoute
   '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/live': typeof MarketplaceLiveRoute
   '/marketplace/mandates': typeof MarketplaceMandatesRoute
+  '/marketplace/manifest': typeof MarketplaceManifestRoute
   '/marketplace/mcp': typeof MarketplaceMcpRoute
+  '/marketplace/orchestrate': typeof MarketplaceOrchestrateRoute
   '/marketplace/pay': typeof MarketplacePayRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
@@ -309,15 +337,19 @@ export interface FileRoutesByTo {
   '/marketplace/access': typeof MarketplaceAccessRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/agents': typeof MarketplaceAgentsRoute
+  '/marketplace/auditor': typeof MarketplaceAuditorRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
+  '/marketplace/credentials': typeof MarketplaceCredentialsRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
   '/marketplace/intent': typeof MarketplaceIntentRoute
   '/marketplace/kit': typeof MarketplaceKitRoute
   '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/live': typeof MarketplaceLiveRoute
   '/marketplace/mandates': typeof MarketplaceMandatesRoute
+  '/marketplace/manifest': typeof MarketplaceManifestRoute
   '/marketplace/mcp': typeof MarketplaceMcpRoute
+  '/marketplace/orchestrate': typeof MarketplaceOrchestrateRoute
   '/marketplace/pay': typeof MarketplacePayRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
@@ -353,15 +385,19 @@ export interface FileRoutesById {
   '/marketplace/access': typeof MarketplaceAccessRoute
   '/marketplace/agent-economy': typeof MarketplaceAgentEconomyRoute
   '/marketplace/agents': typeof MarketplaceAgentsRoute
+  '/marketplace/auditor': typeof MarketplaceAuditorRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/checkout': typeof MarketplaceCheckoutRoute
+  '/marketplace/credentials': typeof MarketplaceCredentialsRoute
   '/marketplace/demand': typeof MarketplaceDemandRoute
   '/marketplace/intent': typeof MarketplaceIntentRoute
   '/marketplace/kit': typeof MarketplaceKitRoute
   '/marketplace/ladder': typeof MarketplaceLadderRoute
   '/marketplace/live': typeof MarketplaceLiveRoute
   '/marketplace/mandates': typeof MarketplaceMandatesRoute
+  '/marketplace/manifest': typeof MarketplaceManifestRoute
   '/marketplace/mcp': typeof MarketplaceMcpRoute
+  '/marketplace/orchestrate': typeof MarketplaceOrchestrateRoute
   '/marketplace/pay': typeof MarketplacePayRoute
   '/marketplace/product': typeof MarketplaceProductRoute
   '/marketplace/protocols': typeof MarketplaceProtocolsRoute
@@ -398,15 +434,19 @@ export interface FileRouteTypes {
     | '/marketplace/access'
     | '/marketplace/agent-economy'
     | '/marketplace/agents'
+    | '/marketplace/auditor'
     | '/marketplace/catalog'
     | '/marketplace/checkout'
+    | '/marketplace/credentials'
     | '/marketplace/demand'
     | '/marketplace/intent'
     | '/marketplace/kit'
     | '/marketplace/ladder'
     | '/marketplace/live'
     | '/marketplace/mandates'
+    | '/marketplace/manifest'
     | '/marketplace/mcp'
+    | '/marketplace/orchestrate'
     | '/marketplace/pay'
     | '/marketplace/product'
     | '/marketplace/protocols'
@@ -438,15 +478,19 @@ export interface FileRouteTypes {
     | '/marketplace/access'
     | '/marketplace/agent-economy'
     | '/marketplace/agents'
+    | '/marketplace/auditor'
     | '/marketplace/catalog'
     | '/marketplace/checkout'
+    | '/marketplace/credentials'
     | '/marketplace/demand'
     | '/marketplace/intent'
     | '/marketplace/kit'
     | '/marketplace/ladder'
     | '/marketplace/live'
     | '/marketplace/mandates'
+    | '/marketplace/manifest'
     | '/marketplace/mcp'
+    | '/marketplace/orchestrate'
     | '/marketplace/pay'
     | '/marketplace/product'
     | '/marketplace/protocols'
@@ -481,15 +525,19 @@ export interface FileRouteTypes {
     | '/marketplace/access'
     | '/marketplace/agent-economy'
     | '/marketplace/agents'
+    | '/marketplace/auditor'
     | '/marketplace/catalog'
     | '/marketplace/checkout'
+    | '/marketplace/credentials'
     | '/marketplace/demand'
     | '/marketplace/intent'
     | '/marketplace/kit'
     | '/marketplace/ladder'
     | '/marketplace/live'
     | '/marketplace/mandates'
+    | '/marketplace/manifest'
     | '/marketplace/mcp'
+    | '/marketplace/orchestrate'
     | '/marketplace/pay'
     | '/marketplace/product'
     | '/marketplace/protocols'
@@ -610,6 +658,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceAgentsRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/auditor': {
+      id: '/marketplace/auditor'
+      path: '/auditor'
+      fullPath: '/marketplace/auditor'
+      preLoaderRoute: typeof MarketplaceAuditorRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/catalog': {
       id: '/marketplace/catalog'
       path: '/catalog'
@@ -622,6 +677,13 @@ declare module '@tanstack/react-router' {
       path: '/checkout'
       fullPath: '/marketplace/checkout'
       preLoaderRoute: typeof MarketplaceCheckoutRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/credentials': {
+      id: '/marketplace/credentials'
+      path: '/credentials'
+      fullPath: '/marketplace/credentials'
+      preLoaderRoute: typeof MarketplaceCredentialsRouteImport
       parentRoute: typeof MarketplaceRoute
     }
     '/marketplace/demand': {
@@ -666,11 +728,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceMandatesRouteImport
       parentRoute: typeof MarketplaceRoute
     }
+    '/marketplace/manifest': {
+      id: '/marketplace/manifest'
+      path: '/manifest'
+      fullPath: '/marketplace/manifest'
+      preLoaderRoute: typeof MarketplaceManifestRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
     '/marketplace/mcp': {
       id: '/marketplace/mcp'
       path: '/mcp'
       fullPath: '/marketplace/mcp'
       preLoaderRoute: typeof MarketplaceMcpRouteImport
+      parentRoute: typeof MarketplaceRoute
+    }
+    '/marketplace/orchestrate': {
+      id: '/marketplace/orchestrate'
+      path: '/orchestrate'
+      fullPath: '/marketplace/orchestrate'
+      preLoaderRoute: typeof MarketplaceOrchestrateRouteImport
       parentRoute: typeof MarketplaceRoute
     }
     '/marketplace/pay': {
@@ -820,15 +896,19 @@ interface MarketplaceRouteChildren {
   MarketplaceAccessRoute: typeof MarketplaceAccessRoute
   MarketplaceAgentEconomyRoute: typeof MarketplaceAgentEconomyRoute
   MarketplaceAgentsRoute: typeof MarketplaceAgentsRoute
+  MarketplaceAuditorRoute: typeof MarketplaceAuditorRoute
   MarketplaceCatalogRoute: typeof MarketplaceCatalogRoute
   MarketplaceCheckoutRoute: typeof MarketplaceCheckoutRoute
+  MarketplaceCredentialsRoute: typeof MarketplaceCredentialsRoute
   MarketplaceDemandRoute: typeof MarketplaceDemandRoute
   MarketplaceIntentRoute: typeof MarketplaceIntentRoute
   MarketplaceKitRoute: typeof MarketplaceKitRoute
   MarketplaceLadderRoute: typeof MarketplaceLadderRoute
   MarketplaceLiveRoute: typeof MarketplaceLiveRoute
   MarketplaceMandatesRoute: typeof MarketplaceMandatesRoute
+  MarketplaceManifestRoute: typeof MarketplaceManifestRoute
   MarketplaceMcpRoute: typeof MarketplaceMcpRoute
+  MarketplaceOrchestrateRoute: typeof MarketplaceOrchestrateRoute
   MarketplacePayRoute: typeof MarketplacePayRoute
   MarketplaceProductRoute: typeof MarketplaceProductRoute
   MarketplaceProtocolsRoute: typeof MarketplaceProtocolsRoute
@@ -850,15 +930,19 @@ const MarketplaceRouteChildren: MarketplaceRouteChildren = {
   MarketplaceAccessRoute: MarketplaceAccessRoute,
   MarketplaceAgentEconomyRoute: MarketplaceAgentEconomyRoute,
   MarketplaceAgentsRoute: MarketplaceAgentsRoute,
+  MarketplaceAuditorRoute: MarketplaceAuditorRoute,
   MarketplaceCatalogRoute: MarketplaceCatalogRoute,
   MarketplaceCheckoutRoute: MarketplaceCheckoutRoute,
+  MarketplaceCredentialsRoute: MarketplaceCredentialsRoute,
   MarketplaceDemandRoute: MarketplaceDemandRoute,
   MarketplaceIntentRoute: MarketplaceIntentRoute,
   MarketplaceKitRoute: MarketplaceKitRoute,
   MarketplaceLadderRoute: MarketplaceLadderRoute,
   MarketplaceLiveRoute: MarketplaceLiveRoute,
   MarketplaceMandatesRoute: MarketplaceMandatesRoute,
+  MarketplaceManifestRoute: MarketplaceManifestRoute,
   MarketplaceMcpRoute: MarketplaceMcpRoute,
+  MarketplaceOrchestrateRoute: MarketplaceOrchestrateRoute,
   MarketplacePayRoute: MarketplacePayRoute,
   MarketplaceProductRoute: MarketplaceProductRoute,
   MarketplaceProtocolsRoute: MarketplaceProtocolsRoute,

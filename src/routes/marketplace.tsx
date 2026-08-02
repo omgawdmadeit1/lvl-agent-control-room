@@ -5,42 +5,28 @@ export const Route = createFileRoute("/marketplace")({
   component: MarketplaceLayout,
   head: () => ({
     meta: [
-      { title: "Marketplace · LVL LTD ideas" },
+      { title: "Marketplace · LVL Agent Product" },
       {
         name: "description",
-        content: "Explore lvlltd.com agent skill marketplace rails, catalog, and x402 challenges",
+        content: "Full-service agent commerce control room for lvlltd.com",
       },
     ],
   }),
 });
 
+/** Primary chrome — full map lives on Overview + /marketplace/manifest */
 const LINKS = [
   { to: "/marketplace" as const, label: "Overview", exact: true },
-  { to: "/marketplace/catalog" as const, label: "Catalog" },
-  { to: "/marketplace/x402" as const, label: "x402" },
-  { to: "/marketplace/rails" as const, label: "Rails" },
-  { to: "/marketplace/agent-economy" as const, label: "Agent economy" },
-  { to: "/marketplace/product" as const, label: "Product OS" },
-  { to: "/marketplace/checkout" as const, label: "Checkout" },
+  { to: "/marketplace/product" as const, label: "Product" },
   { to: "/marketplace/pay" as const, label: "Pay" },
-  { to: "/marketplace/demand" as const, label: "Demand" },
-  { to: "/marketplace/ladder" as const, label: "Ladder" },
-  { to: "/marketplace/sdk" as const, label: "SDK" },
-  { to: "/marketplace/sell" as const, label: "Sell" },
-  { to: "/marketplace/live" as const, label: "Live ops" },
-  { to: "/marketplace/simulate" as const, label: "Simulate" },
-  { to: "/marketplace/kit" as const, label: "Kit" },
-  { to: "/marketplace/shelf" as const, label: "Shelf" },
-  { to: "/marketplace/wallet" as const, label: "Wallet" },
-  { to: "/marketplace/agents" as const, label: "Agents" },
-  { to: "/marketplace/protocols" as const, label: "Protocols" },
-  { to: "/marketplace/intent" as const, label: "Intent" },
-  { to: "/marketplace/trust" as const, label: "Trust" },
+  { to: "/marketplace/checkout" as const, label: "Checkout" },
+  { to: "/marketplace/live" as const, label: "Live" },
+  { to: "/marketplace/orchestrate" as const, label: "Orchestrate" },
   { to: "/marketplace/mcp" as const, label: "MCP" },
-  { to: "/marketplace/access" as const, label: "Access" },
-  { to: "/marketplace/mandates" as const, label: "Mandates" },
-  { to: "/marketplace/ready" as const, label: "Ready" },
+  { to: "/marketplace/auditor" as const, label: "Auditor" },
+  { to: "/marketplace/ladder" as const, label: "Ladder" },
   { to: "/marketplace/receipts" as const, label: "Receipts" },
+  { to: "/marketplace/manifest" as const, label: "Map" },
 ];
 
 function MarketplaceLayout() {
@@ -58,9 +44,6 @@ function MarketplaceLayout() {
             <Link to="/marketplace" className="text-sm font-medium">
               Marketplace
             </Link>
-            <span className="hidden text-xs text-muted sm:inline">
-              ideas behind lvlltd.com
-            </span>
           </div>
           <nav aria-label="Marketplace sections" className="flex flex-wrap gap-1">
             {LINKS.map((l) => {

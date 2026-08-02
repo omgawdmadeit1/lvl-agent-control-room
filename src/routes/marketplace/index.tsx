@@ -152,6 +152,26 @@ const TILES: {
     label: "Receipts",
     blurb: "Local vault + /api/purchases",
   },
+  {
+    to: "/marketplace/auditor",
+    label: "Auditor",
+    blurb: "Grade A public health checks",
+  },
+  {
+    to: "/marketplace/orchestrate",
+    label: "Orchestrate",
+    blurb: "Goal → swarm job plan",
+  },
+  {
+    to: "/marketplace/credentials",
+    label: "Credentials",
+    blurb: "Buyer JWS credential",
+  },
+  {
+    to: "/marketplace/manifest",
+    label: "Manifest",
+    blurb: "Machine-readable route map",
+  },
 ];
 
 function MarketplaceHub() {
