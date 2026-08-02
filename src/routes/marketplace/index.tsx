@@ -66,6 +66,18 @@ function MarketplaceHome() {
             Checkout wizard
           </Link>
           <Link
+            to="/marketplace/live"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-4 text-sm"
+          >
+            Live ops
+          </Link>
+          <Link
+            to="/marketplace/simulate"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-4 text-sm"
+          >
+            Simulate buyer
+          </Link>
+          <Link
             to="/marketplace/agent-economy"
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-accent/40 bg-accent/10 px-4 text-sm font-semibold text-accent"
           >

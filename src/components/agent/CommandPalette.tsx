@@ -130,6 +130,24 @@ export function CommandPalette({
         run: () => { window.location.assign("/marketplace/sell"); },
       },
       {
+        id: "route-live-ops",
+        label: "Route: /marketplace/live",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/live"); },
+      },
+      {
+        id: "route-simulate",
+        label: "Route: /marketplace/simulate",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/simulate"); },
+      },
+      {
+        id: "route-kit",
+        label: "Route: /marketplace/kit",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/kit"); },
+      },
+      {
         id: "route-skills",
         label: "Route: /skills (Skill Pack Studio)",
         group: "Router",

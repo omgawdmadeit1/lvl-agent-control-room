@@ -42,7 +42,7 @@ export const proxyLvlFetch = createServerFn({ method: "POST" })
       path.startsWith("/catalog.json") ||
       path.startsWith("/api/") ||
       path.startsWith("/listings/") ||
-      path.startsWith("/status") ||
+      path.startsWith("/status") || path === "/status.json" ||
       path.startsWith("/skills/") ||
       path.startsWith("/.well-known/") ||
       path === "/agent.json" ||

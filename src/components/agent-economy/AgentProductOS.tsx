@@ -152,6 +152,24 @@ export function AgentProductOS({ data }: { data: ProductSnapshot }) {
             Sell
           </Link>
           <Link
+            to="/marketplace/live"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-medium"
+          >
+            Live ops
+          </Link>
+          <Link
+            to="/marketplace/simulate"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-medium"
+          >
+            Simulate
+          </Link>
+          <Link
+            to="/marketplace/kit"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs font-medium"
+          >
+            Kit
+          </Link>
+          <Link
             to="/marketplace/x402"
             search={{ skill: data.featured.start_here?.id || "agent-x402-first-buy" }}
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"

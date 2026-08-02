@@ -26,6 +26,9 @@ const LINKS = [
   { to: "/marketplace/ladder" as const, label: "Ladder" },
   { to: "/marketplace/sdk" as const, label: "SDK" },
   { to: "/marketplace/sell" as const, label: "Sell" },
+  { to: "/marketplace/live" as const, label: "Live ops" },
+  { to: "/marketplace/simulate" as const, label: "Simulate" },
+  { to: "/marketplace/kit" as const, label: "Kit" },
 ];
 
 function MarketplaceLayout() {
