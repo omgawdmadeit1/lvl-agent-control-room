@@ -53,6 +53,12 @@ function MarketplaceHome() {
             Six rails
           </Link>
           <Link
+            to="/marketplace/product"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-accent-fg"
+          >
+            Agent Product OS
+          </Link>
+          <Link
             to="/marketplace/agent-economy"
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-accent/40 bg-accent/10 px-4 text-sm font-semibold text-accent"
           >

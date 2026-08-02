@@ -52,6 +52,12 @@ export const APP_ROUTES = [
     group: "product",
   },
   {
+    to: "/marketplace/product",
+    label: "Product OS",
+    description: "Full-service agent commerce product",
+    group: "product",
+  },
+  {
     to: "/skills",
     label: "Skill packs",
     description: "Twelve LVL skills as full products",

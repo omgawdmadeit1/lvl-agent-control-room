@@ -20,6 +20,7 @@ const LINKS = [
   { to: "/marketplace/x402" as const, label: "x402" },
   { to: "/marketplace/rails" as const, label: "Rails" },
   { to: "/marketplace/agent-economy" as const, label: "Agent economy" },
+  { to: "/marketplace/product" as const, label: "Product OS" },
 ];
 
 function MarketplaceLayout() {

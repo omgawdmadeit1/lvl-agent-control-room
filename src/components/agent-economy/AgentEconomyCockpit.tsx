@@ -99,6 +99,12 @@ export function AgentEconomyCockpit({ data }: { data: AgentEconomySnapshot }) {
             </button>
           ))}
           <Link
+            to="/marketplace/product"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] bg-accent px-3 text-xs font-semibold text-accent-fg"
+          >
+            Product OS
+          </Link>
+          <Link
             to="/marketplace/x402"
             search={{ skill: data.featuredStart?.id || "agent-x402-first-buy" }}
             className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"

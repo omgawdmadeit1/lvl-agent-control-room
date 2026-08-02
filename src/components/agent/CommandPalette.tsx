@@ -94,6 +94,12 @@ export function CommandPalette({
         run: () => { window.location.assign("/marketplace/agent-economy"); },
       },
       {
+        id: "route-product-os",
+        label: "Route: /marketplace/product (Product OS)",
+        group: "Router",
+        run: () => { window.location.assign("/marketplace/product"); },
+      },
+      {
         id: "route-skills",
         label: "Route: /skills (Skill Pack Studio)",
         group: "Router",
