@@ -1,0 +1,16 @@
+node_modules/
+.vercel/
+dist/
+.tanstack/
+screenshots/
+artifacts/
+attachments/
+lvlltd/
+unlocked/
+unlocked-all/
+unlock-runs/
+*.log
+.node_modules.lock
+.project_id
+.grok/
+vendor/
