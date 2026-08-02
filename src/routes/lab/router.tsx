@@ -197,6 +197,21 @@ function RouterLab() {
           </ul>
         </section>
 
+        <section className="rounded-[var(--radius-xl)] border border-border bg-surface p-5">
+          <h2 className="text-sm font-semibold">Loaders</h2>
+          <p className="mt-2 text-sm text-muted">
+            Ops routes use <code className="text-fg">loader</code> for SSR-safe data. Open the dedicated{" "}
+            <Link to="/lab/loaders" className="text-accent hover:underline">
+              loaders lab
+            </Link>{" "}
+            for pending/error/deps demos, or hit{" "}
+            <Link to="/ops/health" className="text-accent hover:underline">
+              /ops/health
+            </Link>{" "}
+            for a live production score from a loader.
+          </p>
+        </section>
+
         <section className="rounded-[var(--radius-xl)] border border-border bg-elevated p-5">
           <h2 className="text-sm font-semibold">Code map</h2>
           <pre className="mt-3 overflow-x-auto font-mono text-[11px] leading-relaxed text-muted">{`src/router.tsx          createRouter({ routeTree, scrollRestoration })

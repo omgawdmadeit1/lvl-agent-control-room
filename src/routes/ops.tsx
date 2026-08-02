@@ -52,6 +52,12 @@ function OpsLayout() {
             >
               Router lab
             </Link>
+            <Link
+              to="/lab/loaders"
+              className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs text-muted"
+            >
+              Loaders
+            </Link>
           </nav>
         </div>
       </header>

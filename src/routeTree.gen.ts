@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as OpsRouteImport } from './routes/ops'
+import { Route as LabLoadersRouteImport } from './routes/lab/loaders'
 import { Route as LabRouterRouteImport } from './routes/lab/router'
 import { Route as OpsIndexRouteImport } from './routes/ops/index'
 import { Route as OpsBoardRouteImport } from './routes/ops/board'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const OpsRoute = OpsRouteImport.update({
   id: '/ops',
   path: '/ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabLoadersRoute = LabLoadersRouteImport.update({
+  id: '/lab/loaders',
+  path: '/lab/loaders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LabRouterRoute = LabRouterRouteImport.update({
@@ -56,6 +62,7 @@ const OpsScoutRoute = OpsScoutRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ops': typeof OpsRouteWithChildren
+  '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -74,6 +82,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ops': typeof OpsRouteWithChildren
+  '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
   '/ops/board': typeof OpsBoardRoute
   '/ops/health': typeof OpsHealthRoute
@@ -85,17 +94,26 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/ops'
+    | '/lab/loaders'
     | '/lab/router'
     | '/ops/board'
     | '/ops/health'
     | '/ops/scout'
     | '/ops/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/lab/router' | '/ops/board' | '/ops/health' | '/ops/scout' | '/ops'
+  to:
+    | '/'
+    | '/lab/loaders'
+    | '/lab/router'
+    | '/ops/board'
+    | '/ops/health'
+    | '/ops/scout'
+    | '/ops'
   id:
     | '__root__'
     | '/'
     | '/ops'
+    | '/lab/loaders'
     | '/lab/router'
     | '/ops/board'
     | '/ops/health'
@@ -106,6 +124,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   OpsRoute: typeof OpsRouteWithChildren
+  LabLoadersRoute: typeof LabLoadersRoute
   LabRouterRoute: typeof LabRouterRoute
 }
 
@@ -123,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/ops'
       fullPath: '/ops'
       preLoaderRoute: typeof OpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/loaders': {
+      id: '/lab/loaders'
+      path: '/lab/loaders'
+      fullPath: '/lab/loaders'
+      preLoaderRoute: typeof LabLoadersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lab/router': {
@@ -182,6 +208,7 @@ const OpsRouteWithChildren = OpsRoute._addFileChildren(OpsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   OpsRoute: OpsRouteWithChildren,
+  LabLoadersRoute: LabLoadersRoute,
   LabRouterRoute: LabRouterRoute,
 }
 export const routeTree = rootRouteImport

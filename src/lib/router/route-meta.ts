@@ -33,6 +33,12 @@ export const APP_ROUTES = [
     description: "TanStack Router integration explorer + demos",
     group: "lab",
   },
+  {
+    to: "/lab/loaders",
+    label: "Loaders lab",
+    description: "loader, loaderDeps, pendingComponent, errorComponent, staleTime",
+    group: "lab",
+  },
 ] as const;
 
 export type AppRouteTo = (typeof APP_ROUTES)[number]["to"];
