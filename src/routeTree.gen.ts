@@ -10,33 +10,103 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OpsRouteImport } from './routes/ops'
+import { Route as LabRouterRouteImport } from './routes/lab/router'
+import { Route as OpsIndexRouteImport } from './routes/ops/index'
+import { Route as OpsBoardRouteImport } from './routes/ops/board'
+import { Route as OpsHealthRouteImport } from './routes/ops/health'
+import { Route as OpsScoutRouteImport } from './routes/ops/scout'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OpsRoute = OpsRouteImport.update({
+  id: '/ops',
+  path: '/ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabRouterRoute = LabRouterRouteImport.update({
+  id: '/lab/router',
+  path: '/lab/router',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpsIndexRoute = OpsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => OpsRoute,
+} as any)
+const OpsBoardRoute = OpsBoardRouteImport.update({
+  id: '/board',
+  path: '/board',
+  getParentRoute: () => OpsRoute,
+} as any)
+const OpsHealthRoute = OpsHealthRouteImport.update({
+  id: '/health',
+  path: '/health',
+  getParentRoute: () => OpsRoute,
+} as any)
+const OpsScoutRoute = OpsScoutRouteImport.update({
+  id: '/scout',
+  path: '/scout',
+  getParentRoute: () => OpsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ops': typeof OpsRouteWithChildren
+  '/lab/router': typeof LabRouterRoute
+  '/ops/board': typeof OpsBoardRoute
+  '/ops/health': typeof OpsHealthRoute
+  '/ops/scout': typeof OpsScoutRoute
+  '/ops/': typeof OpsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/lab/router': typeof LabRouterRoute
+  '/ops/board': typeof OpsBoardRoute
+  '/ops/health': typeof OpsHealthRoute
+  '/ops/scout': typeof OpsScoutRoute
+  '/ops': typeof OpsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ops': typeof OpsRouteWithChildren
+  '/lab/router': typeof LabRouterRoute
+  '/ops/board': typeof OpsBoardRoute
+  '/ops/health': typeof OpsHealthRoute
+  '/ops/scout': typeof OpsScoutRoute
+  '/ops/': typeof OpsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/ops'
+    | '/lab/router'
+    | '/ops/board'
+    | '/ops/health'
+    | '/ops/scout'
+    | '/ops/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/lab/router' | '/ops/board' | '/ops/health' | '/ops/scout' | '/ops'
+  id:
+    | '__root__'
+    | '/'
+    | '/ops'
+    | '/lab/router'
+    | '/ops/board'
+    | '/ops/health'
+    | '/ops/scout'
+    | '/ops/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OpsRoute: typeof OpsRouteWithChildren
+  LabRouterRoute: typeof LabRouterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +118,71 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ops': {
+      id: '/ops'
+      path: '/ops'
+      fullPath: '/ops'
+      preLoaderRoute: typeof OpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/router': {
+      id: '/lab/router'
+      path: '/lab/router'
+      fullPath: '/lab/router'
+      preLoaderRoute: typeof LabRouterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ops/': {
+      id: '/ops/'
+      path: '/'
+      fullPath: '/ops/'
+      preLoaderRoute: typeof OpsIndexRouteImport
+      parentRoute: typeof OpsRoute
+    }
+    '/ops/board': {
+      id: '/ops/board'
+      path: '/board'
+      fullPath: '/ops/board'
+      preLoaderRoute: typeof OpsBoardRouteImport
+      parentRoute: typeof OpsRoute
+    }
+    '/ops/health': {
+      id: '/ops/health'
+      path: '/health'
+      fullPath: '/ops/health'
+      preLoaderRoute: typeof OpsHealthRouteImport
+      parentRoute: typeof OpsRoute
+    }
+    '/ops/scout': {
+      id: '/ops/scout'
+      path: '/scout'
+      fullPath: '/ops/scout'
+      preLoaderRoute: typeof OpsScoutRouteImport
+      parentRoute: typeof OpsRoute
+    }
   }
 }
 
+interface OpsRouteChildren {
+  OpsBoardRoute: typeof OpsBoardRoute
+  OpsHealthRoute: typeof OpsHealthRoute
+  OpsScoutRoute: typeof OpsScoutRoute
+  OpsIndexRoute: typeof OpsIndexRoute
+}
+
+const OpsRouteChildren: OpsRouteChildren = {
+  OpsBoardRoute: OpsBoardRoute,
+  OpsHealthRoute: OpsHealthRoute,
+  OpsScoutRoute: OpsScoutRoute,
+  OpsIndexRoute: OpsIndexRoute,
+}
+
+const OpsRouteWithChildren = OpsRoute._addFileChildren(OpsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OpsRoute: OpsRouteWithChildren,
+  LabRouterRoute: LabRouterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

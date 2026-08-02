@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 const NAV = [
   { href: "#main-board", label: "Board" },
@@ -8,6 +9,8 @@ const NAV = [
   { href: "#backpressure", label: "Backpressure" },
   { href: "#settings", label: "Settings" },
   { href: "#next-100", label: "Next 100" },
+  { href: "/ops/board", label: "Ops board", route: true },
+  { href: "/lab/router", label: "Router lab", route: true },
   { href: "https://lvlltd.com", label: "lvlltd.com", external: true },
   { href: "#drawer-code", label: "Drawer code" },
   { href: "#keyboard-shortcuts", label: "Shortcuts" },
@@ -60,15 +63,24 @@ export function QuickNav() {
         >
           {NAV.map((item) => (
             <li key={item.href}>
-              <a
-                href={item.href}
-                {...("external" in item && item.external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className="inline-flex h-11 min-target items-center rounded-[var(--radius-md)] px-3 text-xs font-medium text-muted transition hover:bg-elevated hover:text-fg"
-              >
-                {item.label}
-              </a>
+              {"route" in item && item.route ? (
+                <Link
+                  to={item.href as "/ops/board" | "/lab/router"}
+                  className="inline-flex h-11 min-target items-center rounded-[var(--radius-md)] px-3 text-xs font-medium text-muted transition hover:bg-elevated hover:text-fg"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  href={item.href}
+                  {...("external" in item && item.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="inline-flex h-11 min-target items-center rounded-[var(--radius-md)] px-3 text-xs font-medium text-muted transition hover:bg-elevated hover:text-fg"
+                >
+                  {item.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>

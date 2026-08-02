@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Search } from "lucide-react";
 import { useAgentSystem } from "@/lib/agent-system/store";
+import { useNavigate } from "@tanstack/react-router";
 import { activateFocusTrap } from "@/lib/agent-system/focus-trap";
 import { cn } from "@/components/ui/cn";
 
@@ -55,6 +56,22 @@ export function CommandPalette({
         label: "Go to site health",
         group: "Navigate",
         run: () => document.querySelector("#site-health")?.scrollIntoView({ behavior: "smooth" }),
+      },
+      {
+        id: "route-board",
+        label: "Route: /ops/board",
+        group: "Router",
+        run: () => {
+          window.location.href = "/ops/board";
+        },
+      },
+      {
+        id: "route-lab",
+        label: "Route: /lab/router",
+        group: "Router",
+        run: () => {
+          window.location.href = "/lab/router";
+        },
       },
       { id: "approve", label: "Approve ship", hint: "A", group: "Run", run: () => approve() },
       {
