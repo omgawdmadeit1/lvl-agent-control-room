@@ -34,7 +34,7 @@ export function MandateStudio() {
   }
 
   const msg = String(data?.message_to_sign || "");
-  const needsSig = status === 400 && !!msg;
+  const needsSig = !!msg || String(data?.error || "").includes("signature");
 
   return (
     <div className="space-y-6">
@@ -129,10 +129,13 @@ export function MandateStudio() {
         </section>
       )}
 
-      {data && !needsSig && (
-        <pre className="rounded-[var(--radius-xl)] border border-border bg-elevated p-4 font-mono text-[10px] text-muted overflow-auto max-h-96">
-          {JSON.stringify(data, null, 2)}
-        </pre>
+      {data && (
+        <section className="rounded-[var(--radius-xl)] border border-border bg-surface p-4">
+          <p className="font-mono text-[11px] text-subtle">HTTP {status}</p>
+          <pre className="mt-2 max-h-96 overflow-auto rounded bg-elevated p-3 font-mono text-[10px] text-muted">
+            {JSON.stringify(data, null, 2)}
+          </pre>
+        </section>
       )}
 
       <p className="text-xs text-muted">

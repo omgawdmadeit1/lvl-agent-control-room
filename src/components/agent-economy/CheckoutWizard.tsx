@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   CHECKOUT_STEPS,
@@ -15,6 +15,7 @@ import {
 } from "@/lib/agent-economy/checkout";
 import { cn } from "@/components/ui/cn";
 import { UpsellRail } from "@/components/agent-economy/UpsellRail";
+import { loadMarketPrefs, saveMarketPrefs } from "@/lib/agent-economy/prefs";
 
 const inputCls =
   "h-11 w-full rounded-[var(--radius-md)] border border-border bg-elevated px-3 text-sm outline-none focus:border-accent";
@@ -27,6 +28,18 @@ export function CheckoutWizard({
   const [step, setStep] = useState<CheckoutStepId>("discover");
   const [skillId, setSkillId] = useState(initialSkill);
   const [cartSkills, setCartSkills] = useState(initialSkill);
+
+  useEffect(() => {
+    const p = loadMarketPrefs();
+    if (p.lastSkill && initialSkill === "agent-x402-first-buy") {
+      setSkillId(p.lastSkill);
+      setCartSkills(p.cartSkills || p.lastSkill);
+    }
+  }, [initialSkill]);
+
+  useEffect(() => {
+    saveMarketPrefs({ lastSkill: skillId, cartSkills });
+  }, [skillId, cartSkills]);
   const [busy, setBusy] = useState(false);
   const [log, setLog] = useState<string[]>([]);
   const [outline, setOutline] = useState<Record<string, unknown> | null>(null);
