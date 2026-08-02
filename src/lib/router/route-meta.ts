@@ -63,6 +63,12 @@ export const APP_ROUTES = [
     description: "MCP, A2A, x402, AP2 composition + LVL compliance",
     group: "lab",
   },
+  {
+    to: "/lab/settlement",
+    label: "Settlement intelligence",
+    description: "BIS Agorá + XRPL 3.3.0 → agent settlement patterns",
+    group: "lab",
+  },
 ] as const;
 
 export type AppRouteTo = (typeof APP_ROUTES)[number]["to"];

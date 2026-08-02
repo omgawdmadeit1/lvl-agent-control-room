@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
+// settlement lab cross-link
 import {
   INTEROP_STACK,
   INTEROP_STANDARDS,
@@ -78,6 +79,12 @@ export function StandardsExplorer() {
           >
             /api/x402 ↗
           </a>
+          <Link
+            to="/lab/settlement"
+            className="inline-flex h-11 items-center rounded-[var(--radius-md)] border border-border px-3 text-xs"
+          >
+            Settlement intel (Agorá/XRPL)
+          </Link>
         </div>
       </section>
 

@@ -16,6 +16,7 @@ import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as LabInteropRouteImport } from './routes/lab/interop'
 import { Route as LabLoadersRouteImport } from './routes/lab/loaders'
 import { Route as LabRouterRouteImport } from './routes/lab/router'
+import { Route as LabSettlementRouteImport } from './routes/lab/settlement'
 import { Route as MarketplaceIndexRouteImport } from './routes/marketplace/index'
 import { Route as MarketplaceCatalogRouteImport } from './routes/marketplace/catalog'
 import { Route as MarketplaceRailsRouteImport } from './routes/marketplace/rails'
@@ -61,6 +62,11 @@ const LabLoadersRoute = LabLoadersRouteImport.update({
 const LabRouterRoute = LabRouterRouteImport.update({
   id: '/lab/router',
   path: '/lab/router',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabSettlementRoute = LabSettlementRouteImport.update({
+  id: '/lab/settlement',
+  path: '/lab/settlement',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarketplaceIndexRoute = MarketplaceIndexRouteImport.update({
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/lab/interop': typeof LabInteropRoute
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
+  '/lab/settlement': typeof LabSettlementRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/x402': typeof MarketplaceX402Route
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/lab/interop': typeof LabInteropRoute
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
+  '/lab/settlement': typeof LabSettlementRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/x402': typeof MarketplaceX402Route
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/lab/interop': typeof LabInteropRoute
   '/lab/loaders': typeof LabLoadersRoute
   '/lab/router': typeof LabRouterRoute
+  '/lab/settlement': typeof LabSettlementRoute
   '/marketplace/catalog': typeof MarketplaceCatalogRoute
   '/marketplace/rails': typeof MarketplaceRailsRoute
   '/marketplace/x402': typeof MarketplaceX402Route
@@ -187,6 +196,7 @@ export interface FileRouteTypes {
     | '/lab/interop'
     | '/lab/loaders'
     | '/lab/router'
+    | '/lab/settlement'
     | '/marketplace/catalog'
     | '/marketplace/rails'
     | '/marketplace/x402'
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
     | '/lab/interop'
     | '/lab/loaders'
     | '/lab/router'
+    | '/lab/settlement'
     | '/marketplace/catalog'
     | '/marketplace/rails'
     | '/marketplace/x402'
@@ -224,6 +235,7 @@ export interface FileRouteTypes {
     | '/lab/interop'
     | '/lab/loaders'
     | '/lab/router'
+    | '/lab/settlement'
     | '/marketplace/catalog'
     | '/marketplace/rails'
     | '/marketplace/x402'
@@ -245,6 +257,7 @@ export interface RootRouteChildren {
   LabInteropRoute: typeof LabInteropRoute
   LabLoadersRoute: typeof LabLoadersRoute
   LabRouterRoute: typeof LabRouterRoute
+  LabSettlementRoute: typeof LabSettlementRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -296,6 +309,13 @@ declare module '@tanstack/react-router' {
       path: '/lab/router'
       fullPath: '/lab/router'
       preLoaderRoute: typeof LabRouterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/settlement': {
+      id: '/lab/settlement'
+      path: '/lab/settlement'
+      fullPath: '/lab/settlement'
+      preLoaderRoute: typeof LabSettlementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/marketplace/': {
@@ -435,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   LabInteropRoute: LabInteropRoute,
   LabLoadersRoute: LabLoadersRoute,
   LabRouterRoute: LabRouterRoute,
+  LabSettlementRoute: LabSettlementRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -100,6 +100,12 @@ export function CommandPalette({
         run: () => { window.location.assign("/lab/interop"); },
       },
       {
+        id: "route-settlement",
+        label: "Route: /lab/settlement (Agorá/XRPL)",
+        group: "Router",
+        run: () => { window.location.assign("/lab/settlement"); },
+      },
+      {
         id: "route-catalog",
         label: "Route: /marketplace/catalog",
         group: "Router",
