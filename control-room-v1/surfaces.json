@@ -1,0 +1,25 @@
+{
+  "source": "/workspace/ecosystem/BLUEPRINT.md a1/a3 probe set (2026-10-13)",
+  "surfaces": [
+    {"id": "lvlltd", "pillar": "P3", "url": "https://lvlltd.com/api/health"},
+    {"id": "lvlltd-agent-card", "pillar": "P3", "url": "https://lvlltd.com/.well-known/agent-card.json"},
+    {"id": "lvlltd-x402", "pillar": "P3", "url": "https://lvlltd.com/.well-known/x402"},
+    {"id": "lvlltd-oauth-as", "pillar": "P3", "url": "https://lvlltd.com/.well-known/oauth-authorization-server"},
+    {"id": "lvlltd-proof", "pillar": "P3", "url": "https://lvlltd.com/api/proof"},
+    {"id": "agentic-buy", "pillar": "P3", "url": "https://agentic.lvlltd.com/buy"},
+    {"id": "music", "pillar": "P1", "url": "https://music.lvlltd.com"},
+    {"id": "music-catalog-api", "pillar": "P1", "url": "https://lvlltd.com/api/music-catalog?fields=meta"},
+    {"id": "studio", "pillar": "P1", "url": "https://studio.lvlltd.com"},
+    {"id": "release-gated", "pillar": "P1", "url": "https://release.lvlltd.com", "expect": "gated"},
+    {"id": "swarm-gated", "pillar": "P3", "url": "https://swarm.lvlltd.com", "expect": "gated"},
+    {"id": "tr3k", "pillar": "P4", "url": "https://tr3k.lvlltd.com"},
+    {"id": "tesla-trek", "pillar": "P4", "url": "https://www.tesla-trek.com"},
+    {"id": "play", "pillar": "Other", "url": "https://play.lvlltd.com"},
+    {"id": "whop-store", "pillar": "P2", "url": "https://whop.com/lvlltd/"},
+    {"id": "gumroad", "pillar": "P2", "url": "https://josephlamartaylor.gumroad.com"},
+    {"id": "shopify", "pillar": "P2", "url": "https://lvlxlab.myshopify.com"},
+    {"id": "printify-popup", "pillar": "P2", "url": "https://lvlxltd.printify.me"},
+    {"id": "lvlx-files", "pillar": "P2", "url": "https://lvlx-files.vercel.app"},
+    {"id": "control-dns", "pillar": "Hub", "url": "https://control.lvlltd.com", "expect": "not_set_up"}
+  ]
+}
