@@ -1,0 +1,17 @@
+{
+  "note": "Read-only snapshot. Only rows with class=live count as revenue. Never edit numbers by hand without a source.",
+  "rows": [
+    {"rail": "stripe:lvl X (acct_1TVJoWE6xjYB5uvs)", "class": "self_funded", "amount_usd": 0.99, "count": 1,
+     "source": "Stripe GetCharges livemode read-only 2026-10-13 05:42 ET: ch_3UNzQUE6xjYB5uvs0Tjp3GNt $0.99 succeeded 2026-10-07; billing name/email = Joseph Taylor's own address, so classified self-funded"},
+    {"rail": "stripe:lvl X TEST mode", "class": "test", "amount_usd": null, "count": null,
+     "source": "not read: the read-only Stripe connector only exposes livemode for this account"},
+    {"rail": "stripe:Lvlltd (acct_1TcFahE9E4WCqx1Q)", "class": "live", "amount_usd": null, "count": null,
+     "source": "not re-queried; 2026-09-21 brief said 0 live charges (unverified)"},
+    {"rail": "whop:Lvlltd (biz_8McXtvfJTeDsS1)", "class": "live", "amount_usd": 0, "count": 0,
+     "source": "BLUEPRINT.md finding 7: volume_usd 0 (Whop connector, 2026-10-13); every plan read 2026-10-13 shows member_count 0"},
+    {"rail": "shopify:Lvlx labs", "class": "live", "amount_usd": 0, "count": 0,
+     "source": "Shopify Admin GraphQL ordersCount = 0 (EXACT), read-only 2026-10-13 05:50 ET"},
+    {"rail": "x402:Base USDC 0x8E51…c4d1", "class": "self_funded", "amount_usd": "from_proof", "count": "from_proof",
+     "source": "https://lvlltd.com/api/proof framing.statement (fetched at build time)"}
+  ]
+}
